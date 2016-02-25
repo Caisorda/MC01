@@ -1,0 +1,118 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.GridBagLayout;
+import java.awt.CardLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class MainWindow {
+
+	private JFrame frmAgriculture;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow window = new MainWindow();
+					window.frmAgriculture.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public MainWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmAgriculture = new JFrame();
+		frmAgriculture.setTitle("Agriculture");
+		frmAgriculture.setBounds(100, 100, 300, 350);
+		frmAgriculture.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAgriculture.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 284, 311);
+		frmAgriculture.getContentPane().add(panel);
+		
+		JButton btnNum = new JButton("Number of Producers");
+		btnNum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		JButton btnListSource = new JButton("List of Producers per Produce");
+		
+		JButton btnListProduce = new JButton("List of Produce per Producer");
+		
+		JButton btnSpeciality = new JButton("Town Specialities");
+		btnSpeciality.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		JButton btnType = new JButton("List of Producers per Produce Type");
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(75)
+							.addComponent(btnNum))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(56)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnListProduce)
+								.addComponent(btnListSource))))
+					.addContainerGap(55, Short.MAX_VALUE))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(84, Short.MAX_VALUE)
+					.addComponent(btnSpeciality)
+					.addGap(89))
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap(46, Short.MAX_VALUE)
+					.addComponent(btnType)
+					.addGap(37))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(58)
+					.addComponent(btnNum)
+					.addGap(18)
+					.addComponent(btnListSource)
+					.addGap(18)
+					.addComponent(btnListProduce)
+					.addGap(18)
+					.addComponent(btnSpeciality)
+					.addGap(18)
+					.addComponent(btnType)
+					.addContainerGap(66, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+	}
+}
