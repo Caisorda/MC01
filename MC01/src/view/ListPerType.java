@@ -1,7 +1,11 @@
 package view;
 
+import controller.MunicipalityController;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
+import model.Municipality;
 
 public class ListPerType extends JFrame {
 
@@ -41,7 +46,7 @@ public class ListPerType extends JFrame {
 	 * Create the frame.
 	 */
 	public ListPerType() {
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 150, 300);
 		contentPane = new JPanel();
@@ -49,7 +54,35 @@ public class ListPerType extends JFrame {
 		setContentPane(contentPane);
 		
 		JComboBox cbProduce = new JComboBox();
-		cbProduce.setModel(new DefaultComboBoxModel(new String[] {"Algricultural", "Livestock", "Aquatic/Fishery"}));
+		cbProduce.setModel(new DefaultComboBoxModel(new String[] {"", "Agricultural", "Livestock", "Aquatic/Fishery"}));
+                cbProduce.addItemListener(new ItemListener(){
+                    @Override
+                    public void itemStateChanged(ItemEvent event) {
+                        JComboBox comboBox = (JComboBox) event.getSource();
+                        Object item = event.getItem();
+
+                        MunicipalityController mc = new MunicipalityController();
+                        DefaultTableModel model = new DefaultTableModel();
+                        ArrayList<Municipality> result = new ArrayList<>();
+                        
+                        if (event.getStateChange() == ItemEvent.SELECTED) {
+                            switch(item.toString()){
+                                case "Agricultural": result = mc.produceCrops();
+                                                        break;
+                                case "Livestock": result = mc.produceCrops();
+                                                    break;
+                                case "Aquatic/Fishery": result = mc.produceFish();
+                                                        break;
+                            }
+                            String[] towns = new String[result.size()];
+                            for(int i = 0; i < result.size() ; i++){
+                                towns[i] = result.get(i).getMunNum();
+                            }
+                            model.addColumn("Town Name",towns);
+                            table.setModel(model);
+                        }
+                    }
+                });
 		
 		JLabel lblSelectProduce = new JLabel("Select Type");
 		
