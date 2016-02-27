@@ -58,8 +58,17 @@ public class MainWindow {
 		});
 		
 		JButton btnListSource = new JButton("List of Producers per Produce");
+		btnListSource.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 		JButton btnListProduce = new JButton("List of Produce per Producer");
+		btnListProduce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ListProduct().setVisible(true);
+			}
+		});
 		
 		JButton btnSpeciality = new JButton("Town Specialities");
 		btnSpeciality.addActionListener(new ActionListener() {
@@ -68,6 +77,11 @@ public class MainWindow {
 		});
 		
 		JButton btnType = new JButton("List of Producers per Produce Type");
+		btnType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
