@@ -188,9 +188,94 @@ public class Municipality {
         return muns;
     }
     
+    public ArrayList<Municipality> produceLivestock(){
+        ArrayList<Municipality> muns = new ArrayList<>();
+        
+        try{
+            PreparedStatement pstmt;
+            try (Connection conn = DBConnector.getConnection()) {
+                pstmt = conn.prepareStatement("SELECT hpq_hh.mun\n" +
+                                                "FROM hpq_hh\n" +
+                                                "WHERE (live_a_hog = 1 AND live_a_hog_vol > 0)\n" +
+                                                "OR (live_a_goat = 1 AND live_a_goat_vol > 0)\n" +
+                                                "OR (live_a_carabao = 1 AND live_a_carabao_vol > 0)\n" +
+                                                "OR (live_a_cow = 1 AND live_a_cow_vol > 0)\n" +
+                                                "OR (live_a_chicken = 1 AND live_a_chicken_vol > 0)\n" +
+                                                "OR (live_a_others = 1 AND live_a_others_vol > 0)\n" +
+                                                "GROUP BY mun");
+                ResultSet rs = pstmt.executeQuery();
+                while(rs.next()){
+                    muns.add(new Municipality(rs.getString("mun")));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException e) {
+        }
+        
+        return muns;
+    }
     
-//    public ArrayList<Municipality> produceLivestock(){
-//        
-//    }
+    public ArrayList<Municipality> produceLivestock(int livestockId){ //using livestock id
+        ArrayList<Municipality> muns = new ArrayList<>();
+        
+        try{
+            PreparedStatement pstmt;
+            try (Connection conn = DBConnector.getConnection()) {
+                String livestockType = "";
+                
+                switch(livestockId){
+                    case Livestock.CARABAO_KEY: livestockType = "(live_a_carabao = 1 AND live_a_carabao_vol > 0)";
+                                                break;
+                    case Livestock.CHICKEN_KEY: livestockType = "(live_a_chicken = 1 AND live_a_chicken_vol > 0)";
+                                                break;
+                    case Livestock.COW_KEY: livestockType = "(live_a_cow = 1 AND live_a_cow_vol > 0)";
+                                            break;
+                    case Livestock.DUCK_KEY: livestockType = "(live_a_duck = 1 AND live_a_duck_vol > 0)";
+                                             break;
+                    case Livestock.HOG_KEY: livestockType = "(live_a_hog = 1 AND live_a_hog_vol > 0)";
+                                            break;
+                    case Livestock.GOAT_KEY: livestockType = "(live_a_goat = 1 AND live_a_goat_vol > 0)";
+                                             break;
+                }
+                
+                pstmt = conn.prepareStatement("SELECT hpq_hh.mun\n" +
+                                                "FROM hpq_hh\n" +
+                                                "WHERE " + livestockType + 
+                                                "\nGROUP BY hpq_hh.mun");
+                
+                ResultSet rs = pstmt.executeQuery();
+                while(rs.next()){
+                    muns.add(new Municipality(rs.getString("mun")));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException e) {
+        }
+        
+        return muns;
+    }
+    
+    public ArrayList<Municipality> produceLivestock(String livestockName){ //using livestock name
+        ArrayList<Municipality> muns = new ArrayList<>();
+        
+        try{
+            PreparedStatement pstmt;
+            try (Connection conn = DBConnector.getConnection()) {
+                pstmt = conn.prepareStatement("SELECT hpq_hh.mun\n" +
+                                                "FROM hpq_hh\n" +
+                                                "WHERE live_a_others_o LIKE ?" +
+                                                "GROUP BY hpq_hh.mun");
+                pstmt.setString(1, "%" + livestockName + "%");
+                ResultSet rs = pstmt.executeQuery();
+                while(rs.next()){
+                    muns.add(new Municipality(rs.getString("mun")));
+                }
+            }
+            pstmt.close();
+        } catch (SQLException e) {
+        }
+        
+        return muns;
+    }
     
 }
