@@ -22,6 +22,8 @@ public class Municipality {
     
     private String munNum;
     
+    public Municipality(){}
+    
     public Municipality(String munNum){
         this.munNum = munNum;
     }

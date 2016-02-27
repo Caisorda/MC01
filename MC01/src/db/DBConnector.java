@@ -17,7 +17,7 @@ public class DBConnector {
 	
 	static final String url = "jdbc:mysql://localhost:3306/db_hpq"; //schema name here
 	static final String username = "root"; //set username
-	static final String password = "lourdes123"; //set password
+	static final String password = "lourdes"; //set password
 	
 	public DBConnector(){}
 	

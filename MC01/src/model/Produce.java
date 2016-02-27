@@ -15,6 +15,8 @@ public class Produce {
     private int type;
     private String oName;
     private int vol;
+    
+    public Produce(){}
 
     public Produce(int line, int type, String oName, int vol) {
         this.line = line;
