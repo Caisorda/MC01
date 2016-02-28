@@ -46,7 +46,7 @@ public class NumberProducers extends JFrame {
 	public NumberProducers() {
 		setResizable(false);
 		setTitle("Number of Producers");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 249, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

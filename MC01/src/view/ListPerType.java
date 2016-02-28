@@ -47,7 +47,7 @@ public class ListPerType extends JFrame {
 	 */
 	public ListPerType() {
 		setResizable(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 150, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

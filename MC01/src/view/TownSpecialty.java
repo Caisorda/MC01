@@ -38,7 +38,7 @@ public class TownSpecialty extends JFrame {
 	public TownSpecialty() {
 		setResizable(false);
 		setTitle("Town Specialty");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 250, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

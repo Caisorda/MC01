@@ -1,0 +1,23 @@
+Each the average time of 5 runtimes is recorded
+
+input: 1
+note: input that yields the most number of rows
+Average Run Time: 0.86s
+
+input: 6
+note: input that yields no results
+Average Run Time: 0.8524s
+
+input: 17
+note: middle value input
+Average Run Time: 0.873s
+
+input: 20
+note: middle value input
+Average Run Time: 0.8802s
+
+input: 34
+note: input that's not part of the database data
+Average Run Time: 0.8488s
+
+

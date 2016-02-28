@@ -35,12 +35,23 @@ public class ListProduct extends JFrame{
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					ListProduct frame = new ListProduct();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//				try {
+//					ListProduct frame = new ListProduct();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+				ListProductController test = new ListProductController();
+//				System.out.print("Runtime for input \"1\": ");
+				test.get(""+1);
+//				System.out.print("\nRuntime for input \"6\": ");
+				test.get(""+6);
+//				System.out.print("\nRuntime for input \"17\": ");
+				test.get(""+17);
+//				System.out.print("\nRuntime for input \"20\": ");
+				test.get(""+20);
+//				System.out.print("\nRuntime for input \"34\": ");
+				test.get(""+34);
 			}
 		});
 	}
@@ -51,7 +62,7 @@ public class ListProduct extends JFrame{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		String[] muns = new String[]{"1", "2", "3", "4", "5", "6", "7", 
 									 "8", "9", "10", "11", "12", "13", 
@@ -129,6 +140,7 @@ public class ListProduct extends JFrame{
 	public void updateTable(String town){
 		ArrayList<String> products = new ArrayList();
 		products.addAll(listProductController.get(town));
+		System.out.println(products.size());
         clearTable();
         for(String product: products){
         	if(product!=null&&!product.equals("")){

@@ -17,7 +17,7 @@ public class ListProductController {
 		ArrayList<String> products = new ArrayList();
 		double runtime = 0;//stores runtime of the queries
 		Iterator iterate;
-		
+//		town = ""+34;
 		iterate = this.listProductDAO.getBasicCrops(town);
 		//adds runtime of each query to total runtime
 		runtime += Integer.parseInt((String)iterate.next());
@@ -59,7 +59,7 @@ public class ListProductController {
 			products.add((String)i.next());
 		
 		//prints out total runtime of all queries
-		System.out.println(1.0*(runtime/1000) + "s");
+		System.out.println(1.0*(runtime/1000));
 		return products;
 	}
 }
