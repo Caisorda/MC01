@@ -32,18 +32,18 @@ public class ListProduct extends JFrame{
 	private JScrollPane scrollPane;
 	private ListProductController listProductController;
 	
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ListProduct frame = new ListProduct();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ListProduct frame = new ListProduct();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	
 	public ListProduct(){
 		setResizable(false);
