@@ -41,4 +41,16 @@ public class MunicipalityController {
         return new Municipality().produceFish(fishName);
     }
     
+    public ArrayList<Municipality> produceLivestock(){
+        return new Municipality().produceLivestock();
+    }
+    
+    public ArrayList<Municipality> produceLivestock(int livestockId){
+        return new Municipality().produceLivestock(livestockId);
+    }
+    
+    public ArrayList<Municipality> produceLivestock(String livestockName){
+        return new Municipality().produceLivestock(livestockName);
+    }
+    
 }
