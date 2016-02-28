@@ -3,6 +3,8 @@ package view;
 import controller.MunicipalityController;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
@@ -21,11 +23,17 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.DefaultComboBoxModel;
 import model.Municipality;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import model.Crop;
+import model.Fish;
+import model.Livestock;
 
 public class ListPerType extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+        private JComboBox typesCB;
+        private JTextField typesTA;
 
 	/**
 	 * Launch the application.
@@ -69,12 +77,16 @@ public class ListPerType extends JFrame {
                         if (event.getStateChange() == ItemEvent.SELECTED) {
                             switch(item.toString()){
                                 case "Agricultural": result = mc.produceCrops();
+                                                     typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Sugarcane", "Palay", "Corn", "Coffee", "Others"}));
                                                         break;
                                 case "Livestock": result = mc.produceLivestock();
+                                                  typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Hog", "Goat", "Carabao", "Cow", "Chicken", "Duck", "Others"}));
                                                     break;
                                 case "Aquatic/Fishery": result = mc.produceFish();
+                                                        typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Tilapa", "Milkfish", "Catfish", "Mudfish", "Carp", "Others"}));
                                                         break;
                                 default: result = new ArrayList<>();
+                                                  typesCB.setModel(new DefaultComboBoxModel(new String[] {}));
                             }
                             String[] towns = new String[result.size()];
                             for(int i = 0; i < result.size() ; i++){
@@ -90,9 +102,144 @@ public class ListPerType extends JFrame {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
-		JComboBox comboBox = new JComboBox();
+		typesCB = new JComboBox();
+                typesCB.addItemListener(new ItemListener(){
+                    @Override
+                    public void itemStateChanged(ItemEvent event) {
+                        JComboBox comboBox = (JComboBox) event.getSource();
+                        Object item = event.getItem();
+
+                        MunicipalityController mc = new MunicipalityController();
+                        DefaultTableModel model = new DefaultTableModel();
+                        ArrayList<Municipality> result = new ArrayList<>();
+                        
+                        if (event.getStateChange() == ItemEvent.SELECTED) {
+                            switch((String)cbProduce.getSelectedItem()){
+                                case "Agricultural": switch(item.toString()){
+                                                        case "All": result = mc.produceCrops();
+                                                                    typesTA.setText("");
+                                                                    typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Sugarcane": result = mc.produceCrops(Crop.SUGARCANE_KEY);
+                                                                          typesTA.setText("");
+                                                                          typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Palay": result = mc.produceCrops(Crop.PALAY_KEY);
+                                                                      typesTA.setText("");
+                                                                      typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Corn": result = mc.produceCrops(Crop.CORN_KEY);
+                                                                     typesTA.setText("");
+                                                                     typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Coffee": result = mc.produceCrops(Crop.COFFEE_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Others": typesTA.setEditable(true);
+                                                                 break;
+                                                     }
+                                                        break;
+                                case "Livestock": switch(item.toString()){
+                                                        case "All": result = mc.produceLivestock();
+                                                                    typesTA.setText("");
+                                                                    typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Hog": result = mc.produceLivestock(Livestock.HOG_KEY);
+                                                                          typesTA.setText("");
+                                                                          typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Goat": result = mc.produceLivestock(Livestock.GOAT_KEY);
+                                                                      typesTA.setText("");
+                                                                      typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Carabao": result = mc.produceLivestock(Livestock.CARABAO_KEY);
+                                                                     typesTA.setText("");
+                                                                     typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Cow": result = mc.produceLivestock(Livestock.COW_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Chicken": result = mc.produceLivestock(Livestock.CHICKEN_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Duck": result = mc.produceLivestock(Livestock.DUCK_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Others": typesTA.setEditable(true);
+                                                                 break;
+                                                     }
+                                                    break;
+                                case "Aquatic/Fishery": switch(item.toString()){
+                                                        case "All": result = mc.produceFish();
+                                                                    typesTA.setText("");
+                                                                    typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Tilapa": result = mc.produceFish(Fish.TILAPIA_KEY);
+                                                                          typesTA.setText("");
+                                                                          typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Milkfish": result = mc.produceFish(Fish.MILKFISH_KEY);
+                                                                      typesTA.setText("");
+                                                                      typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Catfish": result = mc.produceFish(Fish.CATFISH_KEY);
+                                                                     typesTA.setText("");
+                                                                     typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Mudfish": result = mc.produceFish(Fish.MUDFISH_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Carp": result = mc.produceFish(Fish.CARP_KEY);
+                                                                       typesTA.setText("");
+                                                                       typesTA.setEditable(false);
+                                                                 break;
+                                                        case "Others": typesTA.setEditable(true);
+                                                                 break;
+                                                     }
+                                                        break;
+                                default: result = new ArrayList<>();
+                                                  typesCB.setModel(new DefaultComboBoxModel(new String[] {}));
+                            }
+                            String[] towns = new String[result.size()];
+                            for(int i = 0; i < result.size() ; i++){
+                                towns[i] = result.get(i).getMunNum();
+                            }
+                            model.addColumn("Town Name",towns);
+                            table.setModel(model);
+                        }
+                    }
+                });
 		
-		JTextArea textArea = new JTextArea();
+		typesTA = new JTextField();
+                typesTA.setEditable(false);
+                typesTA.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JTextField textField = (JTextField) e.getSource();
+                        MunicipalityController mc = new MunicipalityController();
+                        DefaultTableModel model = new DefaultTableModel();
+                        ArrayList<Municipality> result = new ArrayList<>();
+                        switch((String)cbProduce.getSelectedItem()){
+                            case "Agricultural": result = mc.produceCrops(textField.getText());
+                                                 break;
+                            case "Livestock": result = mc.produceLivestock(textField.getText());
+                                              break;
+                            case "Aquatic/Fishery": result = mc.produceFish(textField.getText());
+                                                    break;
+                        }
+                        String[] towns = new String[result.size()];
+                        for(int i = 0; i < result.size() ; i++){
+                            towns[i] = result.get(i).getMunNum();
+                        }
+                        model.addColumn("Town Name",towns);
+                        table.setModel(model);
+                    }
+                });
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -106,11 +253,11 @@ public class ListPerType extends JFrame {
 				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(comboBox, 0, 144, Short.MAX_VALUE)
+					.addComponent(typesCB, 0, 144, Short.MAX_VALUE)
 					.addContainerGap())
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+					.addComponent(typesTA, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -120,9 +267,9 @@ public class ListPerType extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(cbProduce, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addComponent(typesCB, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+					.addComponent(typesTA, GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
 					.addGap(18)
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
