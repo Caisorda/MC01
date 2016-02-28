@@ -29,6 +29,10 @@ public class Testing {
         for(int i = 0; i < muns.size(); i++){
             System.out.println(muns.get(i).getMunNum());
         }
+        muns = m.produceLivestock();
+        for(int i = 0; i < muns.size(); i++){
+            System.out.println(muns.get(i).getMunNum());
+        }
         
         
         System.out.println("Sugarcane");
@@ -41,6 +45,11 @@ public class Testing {
         for(int i = 0; i < muns.size(); i++){
             System.out.println(muns.get(i).getMunNum());
         }
+        System.out.println("Duck");
+        muns = m.produceLivestock(Livestock.DUCK_KEY);
+        for(int i = 0; i < muns.size(); i++){
+            System.out.println(muns.get(i).getMunNum());
+        }
         
         
         System.out.println("Cassava");
@@ -50,6 +59,11 @@ public class Testing {
         }
         System.out.println("Bisugo");
         muns = m.produceFish("bisugo");
+        for(int i = 0; i < muns.size(); i++){
+            System.out.println(muns.get(i).getMunNum());
+        }
+        System.out.println("Pabo");
+        muns = m.produceLivestock("pabo");
         for(int i = 0; i < muns.size(); i++){
             System.out.println(muns.get(i).getMunNum());
         }
