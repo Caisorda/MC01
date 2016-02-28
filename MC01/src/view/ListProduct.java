@@ -32,18 +32,18 @@ public class ListProduct extends JFrame{
 	private JScrollPane scrollPane;
 	private ListProductController listProductController;
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListProduct frame = new ListProduct();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ListProduct frame = new ListProduct();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 	
 	public ListProduct(){
 		setResizable(false);
@@ -51,8 +51,7 @@ public class ListProduct extends JFrame{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		String[] muns = new String[]{"1", "2", "3", "4", "5", "6", "7", 
 									 "8", "9", "10", "11", "12", "13", 
 									 "14", "15", "16", "17", "18", "19", 
@@ -101,13 +100,12 @@ public class ListProduct extends JFrame{
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
 		
-		cbProduce.addActionListener(new ActionListener(){
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+		cbProduce.addItemListener(new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
                 updateTable((String)cbProduce.getSelectedItem());
-			}
+            }
         });
-		
 		listProductController = new ListProductController();
 		updateTable((String)cbProduce.getSelectedItem());
 	}

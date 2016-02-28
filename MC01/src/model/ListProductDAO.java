@@ -25,14 +25,8 @@ public class ListProductDAO {
             Connection connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, Integer.parseInt(town));
-
-            //gets runtime of query
-    		long start = System.currentTimeMillis();
             ResultSet resultSet = preparedStatement.executeQuery();
-            long end = System.currentTimeMillis();
-            //brute force-ish approach: add runtime to return iterator
-            products.add("" +(end - start));
-            
+
             while (resultSet.next()) {
             	handle = resultSet.getInt(1);
             	if(handle != 0)
@@ -56,13 +50,7 @@ public class ListProductDAO {
             Connection connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, Integer.parseInt(town));
-
-            //gets runtime of query
-            long start = System.currentTimeMillis();
             ResultSet resultSet = preparedStatement.executeQuery();
-            long end = System.currentTimeMillis();
-            //brute force-ish approach: add runtime to return iterator
-            products.add("" +(end - start));
 
             while (resultSet.next()) {
             	handle = resultSet.getInt(1);
@@ -87,13 +75,7 @@ public class ListProductDAO {
             Connection connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, Integer.parseInt(town));
-
-            //gets runtime of query
-            long start = System.currentTimeMillis();
             ResultSet resultSet = preparedStatement.executeQuery();
-            long end = System.currentTimeMillis();
-            //brute force-ish approach: add runtime to return iterator
-            products.add("" +(end - start));
 
             while (resultSet.next()) {
             	products.add(resultSet.getString(1));
@@ -116,14 +98,8 @@ public class ListProductDAO {
             Connection connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, Integer.parseInt(town));
-
-            //gets runtime of query
-            long start = System.currentTimeMillis();
             ResultSet resultSet = preparedStatement.executeQuery();
-            long end = System.currentTimeMillis();
-            //brute force-ish approach: add runtime to return iterator
-            products.add("" +(end - start));
-            
+
             while (resultSet.next()) {
             	products.add(resultSet.getString(1));
             }
@@ -152,30 +128,23 @@ public class ListProductDAO {
             Connection connection = DBConnector.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1, Integer.parseInt(town));
-
-            //gets runtime of query
-            long start = System.currentTimeMillis();
             ResultSet resultSet = preparedStatement.executeQuery();
-            long end = System.currentTimeMillis();
-            //brute force-ish approach: add runtime to return iterator
-            products.add("" +(end - start));
-            
-            
+
             if (resultSet.next()) {
             	if(resultSet.getInt("pig") == 1)
-            		products.add("Pig");
+            		products.add("pig");
             	if(resultSet.getInt("goat") == 1)
-            		products.add("Goat");
+            		products.add("goat");
             	if(resultSet.getInt("carabao") == 1)
-            		products.add("Carabao");
+            		products.add("carabao");
             	if(resultSet.getInt("cow") == 1)
-            		products.add("Cow");
+            		products.add("cow");
             	if(resultSet.getInt("chicken") == 1)
-            		products.add("Chicken");
+            		products.add("chicken");
             	if(resultSet.getInt("duck") == 1)
-            		products.add("Duck");
+            		products.add("duck");
             	if(resultSet.getInt("other") == 1)
-            		products.add("Other Livestock");
+            		products.add("other");
             	
             }
         }catch(SQLException sqle){
