@@ -69,10 +69,11 @@ public class ListPerType extends JFrame {
                             switch(item.toString()){
                                 case "Agricultural": result = mc.produceCrops();
                                                         break;
-                                case "Livestock": result = mc.produceCrops();
+                                case "Livestock": result = mc.produceLivestock();
                                                     break;
                                 case "Aquatic/Fishery": result = mc.produceFish();
                                                         break;
+                                default: result = new ArrayList<>();
                             }
                             String[] towns = new String[result.size()];
                             for(int i = 0; i < result.size() ; i++){
