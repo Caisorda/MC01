@@ -1,0 +1,74 @@
+INITIAL NOTES: THESE FUNCTIONS RETURN THE LIST OF MUNICIPALITIES
+THAT PRODUCE A CERTAIN PRODUCT. THE FUNCTIONS DON'T HAVE ANY 
+PARAMETERS
+
+FIRST RUN
+
+Function produceCrops()
+Runtime: 0.164
+
+Function produceLivestock()
+Runtime: 0.226
+
+Function produceFish()
+Runtime: 0.123
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SECOND RUN
+
+Function produceCrops()
+Runtime: 0.174
+
+Function produceLivestock()
+Runtime: 0.229
+
+Function produceFish()
+Runtime: 0.121
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+THIRD RUN
+
+Function  produceCrops()
+Runtime: 0.153
+
+Function produceLivestock()
+Runtime: 0.226
+
+Function produceFish()
+Runtime: 0.122
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FOURTH RUN
+
+Function produceCrops()
+Runtime: 0.153
+
+Function produceLivestock()
+Runtime: 0.219
+
+Function produceFish()
+Runtime: 0.129
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+FIFTH RUN
+
+Function produceCrops()
+Runtime: 0.151
+
+Function produceLivestock()
+Runtime: 0.223
+
+Function produceFish()
+Runtime: 0.12
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AVERAGE RUN
+
+Function produceCrops()
+Runtime: 0.159
+
+Function produceLivestock()
+Runtime: 0.2246
+
+Function produceFish()
+Runtime: 0.123

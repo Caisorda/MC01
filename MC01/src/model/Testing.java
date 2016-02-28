@@ -6,6 +6,7 @@
 
 package model;
 
+import controller.MunicipalityController;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class Testing {
     public static void main(String args[]){ // class for testing models
         Crop c = new Crop();
         Fish f = new Fish();
-        Municipality m = new Municipality();
+        MunicipalityController m = new MunicipalityController();
         
         ArrayList<Municipality> muns;
         
