@@ -63,7 +63,7 @@ public class ListPerType extends JFrame {
 		setContentPane(contentPane);
 		
 		JComboBox cbProduce = new JComboBox();
-		cbProduce.setModel(new DefaultComboBoxModel(new String[] {"", "Agricultural", "Livestock", "Aquatic/Fishery"}));
+		cbProduce.setModel(new DefaultComboBoxModel(new String[] {"Agricultural", "Livestock", "Aquatic/Fishery"}));
                 cbProduce.addItemListener(new ItemListener(){
                     @Override
                     public void itemStateChanged(ItemEvent event) {
