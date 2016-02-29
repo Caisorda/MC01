@@ -21,36 +21,121 @@ public class Household_ProduceDAO {
 		System.out.println("household dao initialized.");
 	}
 	
-	public Iterator getCount(){
-		ArrayList<Long> counts = new ArrayList();
+	public Iterator getHouseHoldCount(){
+		ArrayList<NumberProducer> counts = new ArrayList();
 		//System.out.println("household dao initialized.");
 		try{
-			String query = "select count(nullif(live_a_hog, 2)) as hog, " +
-							   " count( croptype) as crops, " +
-							   " count(distinct aquanitype_o)as sea_creatures, " +
- 							   " count(nullif(live_a_goat, 2))  as goat," +
-							   " count(nullif(live_a_carabao, 2)) as carabao, " +
-							   " count(nullif(live_a_cow, 2)) as cow," +
-							   " count(nullif(live_a_chicken, 2)) as chicken," +
-							   " count(nullif(live_a_duck, 2)) as duck " +
-							   " from hpq_hh h,hpq_crop c,hpq_aquani a " +
-							   " where c.hpq_hh_id = h.id and a.hpq_hh_id = h.id AND aquanitype=6";
+			String query = "select "
+					   + "( SELECT COUNT(live_a_hog) AS goat FROM hpq_hh where live_a_hog =1 ) as hog, "
+					   + "( SELECT COUNT(live_a_goat) AS goat FROM hpq_hh where live_a_goat =1 ) as goat, "
+					   + "( SELECT COUNT(live_a_carabao) AS goat FROM hpq_hh where live_a_carabao =1 ) as carabao, "
+					   + "( SELECT COUNT(live_a_cow) AS goat FROM hpq_hh where live_a_cow =1 ) as cow, "
+					   + "( SELECT COUNT(live_a_chicken) AS goat FROM hpq_hh where live_a_chicken =1 ) as chicken, "
+					   + "( SELECT COUNT(live_a_duck) AS goat FROM hpq_hh where live_a_duck =1 ) as duck, "
+					   + "(SELECT COUNT(live_a_duck) AS goat FROM hpq_hh where live_a_others =1 ) as others, "
+					   + "(SELECT  COUNT(distinct aquanitype_o)   "
+					   + "from hpq_aquani a, hpq_hh h  "
+					   + "where a.hpq_hh_id = h.id AND aquanitype=6) as aquani, "
+					   + "(SELECT COUNT( croptype) as crops "
+					   + "from  hpq_hh h,hpq_crop c where c.hpq_hh_id = h.id) as crops ";
 			PreparedStatement preps = connection.prepareStatement(query);
-			ResultSet rs  = preps.executeQuery();
-			System.out.println("query executed");
-			while(rs.next()){
-				for(int i = 1;i<9;i++){
-				long temp = rs.getLong(i);
-				counts.add(temp);
-			//	System.out.println("temp got: " + temp);
-				}
-			}}catch(SQLException sqle){
+			
+			long start = System.currentTimeMillis();
+            ResultSet rs = preps.executeQuery();
+            long end = System.currentTimeMillis();
+            System.out.println("Input: \"Household\"");
+			System.out.println(1.0*(end - start)/1000);
+			System.out.println();
+			
+			if(rs.next()){
+				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
+				counts.add(new NumberProducer("Chicken", rs.getLong("chicken")));
+				counts.add(new NumberProducer("Carabao", rs.getLong("carabao")));
+				counts.add(new NumberProducer("Cow", rs.getLong("cow")));
+				counts.add(new NumberProducer("Goat", rs.getLong("goat")));
+				counts.add(new NumberProducer("Duck", rs.getLong("duck")));
+				counts.add(new NumberProducer("Other Livestock", rs.getLong("others")));
+				counts.add(new NumberProducer("Crops", rs.getLong("crops")));
+				counts.add(new NumberProducer("Sea Produce", rs.getLong("aquani")));
+				
+			}
+			}catch(SQLException sqle){
 				System.out.println("problem in dao.");
 			}
 			return counts.iterator();
 					
 	
 		}
+	
+	public Iterator getTownCount(){
+		ArrayList<NumberProducer> counts = new ArrayList();
+		try{
+			String query = "select (select COUNT(*) as ducks " 
+					+ "from (select count(nullif(live_a_duck, 2)) as duck " 
+							+ "from hpq_hh h " 
+							+ "group by mun) as a " 
+							+ " where duck>0) as duck, " 
+							+ " (select COUNT(*) as chickens " 
+							+ "from (select count(nullif(live_a_chicken, 2)) as chicken " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where chicken>0 " 
+							+ ") as chicken, " 
+							+ "(select COUNT(*) as cows " 
+							+ "from (select count(nullif(live_a_cow, 2)) as cow " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where cow>0) as cow, " 
+							+ "(select COUNT(*) as carabaos " 
+							+ "from (select count(nullif(live_a_carabao, 2)) as carabao " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where carabao>0) as carabao, " 
+							+ "(select COUNT(*) as goats " 
+							+ "from (select count(nullif(live_a_goat, 2))  as goat " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where goat>0)as goat, " 
+							+ "(select COUNT(*) as hogs " 
+							+ "from (select count(nullif(live_a_hog, 2)) as hog " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where hog>0) AS hog, " 
+							+ "(select COUNT(*) as hogs " 
+							+ "from (select count(nullif(live_a_others, 2)) as hog " 
+							+ "from hpq_hh h " 
+							+ "group by mun) a where hog>0) AS others, " 
+							+ "(select COUNT(*) as seafood " 
+							+ "from (select count(distinct aquanitype_o)as sea_creatures " 
+							+ "from hpq_hh h,hpq_aquani a " 
+							+ "where a.hpq_hh_id = h.id AND aquanitype=6 " 
+							+ "group by mun) a where sea_creatures>0) as seafood, " 
+							+ "(select COUNT(*) as crops " 
+							+ "from (select count( croptype) as crop " 
+							+ "from hpq_hh h,hpq_crop c " 
+							+ "where c.hpq_hh_id = h.id " 
+							+ "group by mun) a where crop>0) as crops";
+			PreparedStatement preps = connection.prepareStatement(query);
+			
+			long start = System.currentTimeMillis();
+            ResultSet rs = preps.executeQuery();
+            long end = System.currentTimeMillis();
+            System.out.println("Input: \"Town\"");
+			System.out.println(1.0*(end - start)/1000);
+			System.out.println();
+			
+			if(rs.next()){
+				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
+				counts.add(new NumberProducer("Chicken", rs.getLong("chicken")));
+				counts.add(new NumberProducer("Carabao", rs.getLong("carabao")));
+				counts.add(new NumberProducer("Cow", rs.getLong("cow")));
+				counts.add(new NumberProducer("Goat", rs.getLong("goat")));
+				counts.add(new NumberProducer("Duck", rs.getLong("duck")));
+				counts.add(new NumberProducer("Other Livestock", rs.getLong("others")));
+				counts.add(new NumberProducer("Crops", rs.getLong("crops")));
+				counts.add(new NumberProducer("Sea Produce", rs.getLong("seafood")));
+				
+			}
+			}catch(SQLException sqle){
+				System.out.println("problem in dao.");
+			}
+			return counts.iterator();
 	}
+}
 	
 

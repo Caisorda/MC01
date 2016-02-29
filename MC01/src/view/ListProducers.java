@@ -2,6 +2,10 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,26 +19,32 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ListProductController;
+import controller.TownProduceController;
+
 public class ListProducers extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private DefaultTableModel model;
+	private JScrollPane scrollPane;
+	private TownProduceController townProduceController;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ListProducers frame = new ListProducers();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					ListProducers frame = new ListProducers();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
@@ -47,11 +57,17 @@ public class ListProducers extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JComboBox cbProduce = new JComboBox();
+		townProduceController = new TownProduceController();
+		String[] produce = new String[]{"Pig", "Cow", "Goat", "Duck", "Chicken", 
+				"Carabao", "Sugar Cane", 
+				"Palay", "Corn", "Other Crops", "Tilapia", 
+				"Milkfish", "Catfish", "Mudfish", "Carp", 
+				"Other Aquatic Produce"};
+		JComboBox cbProduce = new JComboBox(produce);
 		
 		JLabel lblSelectProduce = new JLabel("Select Produce");
 		
-		JScrollPane scrollPane = new JScrollPane();
+		scrollPane = new JScrollPane();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -76,14 +92,54 @@ public class ListProducers extends JFrame {
 		);
 		
 		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Town Name"
+		this.model = new DefaultTableModel() {
+
+			public boolean isFocusable(int rowIndex, int mColIndex) {
+				return false;
 			}
-		));
+
+			public boolean isCellSelectable(int rowIndex, int mColIndex) {
+				return false;
+			}
+		};
+        this.model.setColumnIdentifiers(new String[]{"Produce"});
+        this.table.setModel(model);
 		scrollPane.setViewportView(table);
 		contentPane.setLayout(gl_contentPane);
+		cbProduce.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+                updateTable((String)cbProduce.getSelectedItem());
+			}
+        });
+		updateTable((String)cbProduce.getSelectedItem());
+	}
+	
+	public void clearTable(){
+        
+		for (int i = 0; i < this.model.getRowCount(); i++) {
+			for (int j = 0; j < this.model.getColumnCount(); j++) {
+				this.model.setValueAt(null, i, j);
+			}
+			this.model.removeRow(i);
+		}
+		
+		this.model.setRowCount(0);
+		this.model.getDataVector().removeAllElements();
+		this.model.fireTableDataChanged(); 
+	} 
+	
+	public void updateTable(String produce){
+		String result;
+		clearTable();
+		for(Iterator i = townProduceController.get(produce); i.hasNext();){
+			result = ((String)i.next());
+			if(result!=null&&!result.equals("")){
+        		model.setRowCount(model.getRowCount() + 1);
+        		model.setValueAt(result, model.getRowCount() - 1, 0);
+        	}
+		}
+        scrollPane.repaint();
+        scrollPane.revalidate();
 	}
 }

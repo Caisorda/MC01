@@ -1,0 +1,7 @@
+Input: "Household"
+Note: returns a higher count
+Average Runtime: 1.8446s
+
+Input: "Town"
+Average Runtime: 2.1908s
+

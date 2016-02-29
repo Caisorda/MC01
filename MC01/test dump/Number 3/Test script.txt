@@ -1,0 +1,23 @@
+Input: Cow
+Note: Highest number of rows, Data from large table
+Average Run Time: 0.2124s
+
+Input: Goat
+Note: Highest number of rows, Data from large table
+Average Run Time: 0.2082s
+
+Input: Tilapia
+Note: Lowest number of rows, Additional WHERE statement
+Average Run Time: 0.0128s
+
+Input: Carp
+Note: Median value, Additional WHERE statement
+Average Run Time: 0.0118s
+
+Input: Corn
+Note: Median value
+Average Run Time: 0.0446s
+
+Input: Other Aquatic Produce
+Note: High Median Value, Additional WHERE statement
+Average Run Time: 0.1352s
