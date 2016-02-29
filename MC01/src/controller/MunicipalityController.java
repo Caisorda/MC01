@@ -108,4 +108,94 @@ public class MunicipalityController {
         return results;
     }
     
+    public ArrayList<Municipality> optimizedProduceCrops(){
+        Iterator iterator = new Municipality().optimizedProduceCrops();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceCrops(int cropId){
+        Iterator iterator =  new Municipality().optimizedProduceCrops(cropId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceCrops(String cropName){
+        Iterator iterator =  new Municipality().optimizedProduceCrops(cropName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceFish(){
+        Iterator iterator =  new Municipality().optimizedProduceFish();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceFish(int fishId){
+        Iterator iterator =  new Municipality().optimizedProduceFish(fishId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceFish(String fishName){
+        Iterator iterator =  new Municipality().optimizedProduceFish(fishName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceLivestock(){
+        Iterator iterator =  new Municipality().optimizedProduceLivestock();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceLivestock(int livestockId){
+        Iterator iterator =  new Municipality().optimizedProduceLivestock(livestockId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
+    public ArrayList<Municipality> optimizedProduceLivestock(String livestockName){
+        Iterator iterator =  new Municipality().optimizedProduceLivestock(livestockName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
+    }
+    
 }
