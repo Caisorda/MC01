@@ -7,6 +7,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import model.Municipality;
 
 /**
@@ -18,39 +19,93 @@ public class MunicipalityController {
     public MunicipalityController(){}
     
     public ArrayList<Municipality> produceCrops(){
-        return new Municipality().produceCrops();
+        Iterator iterator = new Municipality().produceCrops();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceCrops(int cropId){
-        return new Municipality().produceCrops(cropId);
+        Iterator iterator =  new Municipality().produceCrops(cropId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceCrops(String cropName){
-        return new Municipality().produceCrops(cropName);
+        Iterator iterator =  new Municipality().produceCrops(cropName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceFish(){
-        return new Municipality().produceFish();
+        Iterator iterator =  new Municipality().produceFish();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceFish(int fishId){
-        return new Municipality().produceFish(fishId);
+        Iterator iterator =  new Municipality().produceFish(fishId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceFish(String fishName){
-        return new Municipality().produceFish(fishName);
+        Iterator iterator =  new Municipality().produceFish(fishName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceLivestock(){
-        return new Municipality().produceLivestock();
+        Iterator iterator =  new Municipality().produceLivestock();
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceLivestock(int livestockId){
-        return new Municipality().produceLivestock(livestockId);
+        Iterator iterator =  new Municipality().produceLivestock(livestockId);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
     public ArrayList<Municipality> produceLivestock(String livestockName){
-        return new Municipality().produceLivestock(livestockName);
+        Iterator iterator =  new Municipality().produceLivestock(livestockName);
+        ArrayList<Municipality> results = new ArrayList<>();
+        
+        for(Iterator i = iterator; i.hasNext();)
+                results.add((Municipality)i.next());
+        
+        return results;
     }
     
 }

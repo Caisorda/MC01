@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import db.DBConnector;
+import java.util.Iterator;
 
 /**
  *
@@ -36,7 +37,7 @@ public class Municipality {
         this.munNum = munNum;
     }
     
-    public ArrayList<Municipality> produceCrops(){
+    public Iterator produceCrops(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -48,7 +49,10 @@ public class Municipality {
                                                 "ON hpq_hh.id = hpq_crop.hpq_hh_id\n" +
                                                 "WHERE hpq_hh.id IS NOT NULL\n" +
                                                 "GROUP BY hpq_hh.mun");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceCrops(): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -57,10 +61,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceCrops(int cropId){ //using crop id
+    public Iterator produceCrops(int cropId){ //using crop id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -74,7 +78,10 @@ public class Municipality {
                                                 "	AND hpq_crop.croptype = ?\n" +
                                                 "GROUP BY hpq_hh.mun");
                 pstmt.setInt(1, cropId);
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceCrops(int): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -83,10 +90,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceCrops(String cropName){ //using crop name
+    public Iterator produceCrops(String cropName){ //using crop name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -100,7 +107,10 @@ public class Municipality {
                                                 "	AND hpq_crop.croptype_o LIKE ?\n" +
                                                 "GROUP BY hpq_hh.mun");
                 pstmt.setString(1, "%" + cropName + "%");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceCrops(String): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -109,10 +119,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceFish(){
+    public Iterator produceFish(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -124,7 +134,10 @@ public class Municipality {
                                                 "ON hpq_hh.id = hpq_aquani.hpq_hh_id\n" +
                                                 "WHERE hpq_hh.id IS NOT NULL\n" +
                                                 "GROUP BY hpq_hh.mun");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceFish(): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -133,10 +146,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceFish(int fishId){ //using fish id
+    public Iterator produceFish(int fishId){ //using fish id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -150,7 +163,10 @@ public class Municipality {
                                                 "	AND hpq_aquani.aquanitype = ?\n" +
                                                 "GROUP BY hpq_hh.mun");
                 pstmt.setInt(1, fishId);
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceFish(int): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -159,10 +175,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceFish(String fishName){ //using fish name
+    public Iterator produceFish(String fishName){ //using fish name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -176,7 +192,10 @@ public class Municipality {
                                                 "	AND hpq_aquani.aquanitype_o LIKE ?\n" +
                                                 "GROUP BY hpq_hh.mun");
                 pstmt.setString(1, "%" + fishName + "%");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceFish(String): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -185,10 +204,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceLivestock(){
+    public Iterator produceLivestock(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -203,7 +222,10 @@ public class Municipality {
                                                 "OR (live_a_chicken = 1 AND live_a_chicken_vol > 0)\n" +
                                                 "OR (live_a_others = 1 AND live_a_others_vol > 0)\n" +
                                                 "GROUP BY mun");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceLivestock(): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -212,10 +234,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceLivestock(int livestockId){ //using livestock id
+    public Iterator produceLivestock(int livestockId){ //using livestock id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -243,7 +265,10 @@ public class Municipality {
                                                 "WHERE " + livestockType + 
                                                 "\nGROUP BY hpq_hh.mun");
                 
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceLivestock(int): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -252,10 +277,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
-    public ArrayList<Municipality> produceLivestock(String livestockName){ //using livestock name
+    public Iterator produceLivestock(String livestockName){ //using livestock name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -266,7 +291,10 @@ public class Municipality {
                                                 "WHERE live_a_others_o LIKE ?" +
                                                 "GROUP BY hpq_hh.mun");
                 pstmt.setString(1, "%" + livestockName + "%");
+                long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
+                long end = System.currentTimeMillis();
+                System.out.println("Runtime for produceLivestock(String): " + ((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -275,7 +303,7 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns;
+        return muns.iterator();
     }
     
 }
