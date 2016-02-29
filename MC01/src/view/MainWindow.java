@@ -60,6 +60,7 @@ public class MainWindow {
 		JButton btnListSource = new JButton("List of Producers per Produce");
 		btnListSource.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+                            new ListPerType().setVisible(true);
 			}
 		});
 		
