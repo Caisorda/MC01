@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
+import controller.NumberProducerController;
 public class NumberProducers extends JFrame {
 
 	private JPanel contentPane;
@@ -30,12 +31,15 @@ public class NumberProducers extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					NumberProducers frame = new NumberProducers();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+//				try {
+//					NumberProducers frame = new NumberProducers();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+				
+				NumberProducerController  test = new NumberProducerController();
+				test.getHouseHoldCount();
 			}
 		});
 	}
