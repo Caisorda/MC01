@@ -78,15 +78,23 @@ public class ListPerType extends JFrame {
                             switch(item.toString()){
                                 case "Agricultural": result = mc.produceCrops();
                                                      typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Sugarcane", "Palay", "Corn", "Coffee", "Others"}));
-                                                        break;
+                                                     typesTA.setText("");
+                                                     typesTA.setEditable(false);   
+                                                     break;
                                 case "Livestock": result = mc.produceLivestock();
                                                   typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Hog", "Goat", "Carabao", "Cow", "Chicken", "Duck", "Others"}));
-                                                    break;
+                                                  typesTA.setText("");
+                                                  typesTA.setEditable(false);  
+                                                  break;
                                 case "Aquatic/Fishery": result = mc.produceFish();
                                                         typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Tilapa", "Milkfish", "Catfish", "Mudfish", "Carp", "Others"}));
+                                                        typesTA.setText("");
+                                                        typesTA.setEditable(false);
                                                         break;
                                 default: result = new ArrayList<>();
-                                                  typesCB.setModel(new DefaultComboBoxModel(new String[] {}));
+                                         typesTA.setText("");
+                                         typesTA.setEditable(false);         
+                                         typesCB.setModel(new DefaultComboBoxModel(new String[] {}));
                             }
                             String[] towns = new String[result.size()];
                             for(int i = 0; i < result.size() ; i++){

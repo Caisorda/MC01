@@ -1,0 +1,143 @@
+package view;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class MainWindow {
+
+	private JFrame frmAgriculture;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow window = new MainWindow();
+					window.frmAgriculture.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+//test commit.
+	/**
+	 * Create the application.
+	 */
+	public MainWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmAgriculture = new JFrame();
+		frmAgriculture.setTitle("Agriculture");
+		frmAgriculture.setBounds(100, 100, 325, 350);
+		frmAgriculture.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmAgriculture.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 300, 311);
+		frmAgriculture.getContentPane().add(panel);
+		
+		JButton btnNum = new JButton("Number of Producers");
+		btnNum.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new NumberProducers().setVisible(true);
+			}
+		});
+		
+		JButton btnListSource = new JButton("List of Producers per Produce");
+		btnListSource.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
+				new ListProducers().setVisible(true);
+=======
+                            new ListPerType().setVisible(true);
+>>>>>>> 927cd29bed91849436ce9d1b558b12483b8da201
+			}
+		});
+		
+		JButton btnListProduce = new JButton("List of Produce per Producer");
+		btnListProduce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ListProduct().setVisible(true);
+			}
+		});
+		
+		JButton btnAgrarian = new JButton("ARCDP beneficiaries and their Produce");
+		btnAgrarian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AgrarianReform().setVisible(true);
+			}
+		});
+		
+		JButton btnType = new JButton("List of Producers per Produce Type");
+		btnType.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new ListPerType().setVisible(true);
+			}
+		});
+		
+		JButton btnSummary = new JButton("Query Summary");
+		btnSummary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new SummaryTable();
+			}
+		});
+		
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(75)
+							.addComponent(btnNum))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(42)
+							.addComponent(btnType))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(56)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnListProduce)
+								.addComponent(btnListSource)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(87)
+							.addComponent(btnSummary))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(34)
+							.addComponent(btnAgrarian)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(36)
+					.addComponent(btnNum)
+					.addGap(18)
+					.addComponent(btnListSource)
+					.addGap(18)
+					.addComponent(btnListProduce)
+					.addGap(18)
+					.addComponent(btnAgrarian)
+					.addGap(18)
+					.addComponent(btnType)
+					.addGap(18)
+					.addComponent(btnSummary)
+					.addContainerGap(47, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
+	}
+}
