@@ -7,6 +7,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
 
+import controller.ListProductController;
 import model.AgrarianDAO;
 import model.Household_ProduceDAO;
 import model.ListProductDAO;
@@ -149,9 +150,14 @@ public class SummaryTable {
 		model.setRowCount(model.getRowCount() + 1);
                 model.setValueAt("", model.getRowCount() - 1, 0);
 		model.setValueAt("List of towns that produce livestock using a string ('aso' as test case)", model.getRowCount() - 1, 1);
+		model.setRowCount(model.getRowCount() + 1);
+		model.setValueAt("8", model.getRowCount() - 1, 0);
+		model.setValueAt("List of Households and their produce that are beneficiaries of ARCDP", model.getRowCount() - 1, 1);
+	
 	}
 	
 	public void testQueries(){
+<<<<<<< HEAD
             Household_ProduceDAO hpDAO = new Household_ProduceDAO();
             AgrarianDAO aDAO = new AgrarianDAO();
             ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
@@ -344,5 +350,47 @@ public class SummaryTable {
             model.setValueAt(oQuery7p2+"s", 18, 3);
             model.setValueAt(oQuery7p3+"s", 19, 3);
             
+=======
+		Household_ProduceDAO hpDAO = new Household_ProduceDAO();
+		AgrarianDAO aDAO = new AgrarianDAO();
+		ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
+		ListProductController lpController = new ListProductController();
+		Municipality mDAO = new Municipality();
+		//For Queries 1 & 2
+		model.setValueAt(hpDAO.getHouseHoldCount().get(0).getTime()+"s", 0, 2);
+		model.setValueAt(hpDAO.optimizedHouseHoldCount().get(0).getTime()+"s", 0, 3);
+		model.setValueAt(hpDAO.getTownCount().get(0).getTime()+"s", 1, 2);
+		model.setValueAt(hpDAO.optimizedTownCount().get(0).getTime()+"s", 1, 3);
+        
+                // For query 3 ltppDAO townProduceController.getOptimized(produce).next()
+                model.setValueAt(ltppDAO.forHogs().get(0)+"s", 2, 2);
+                model.setValueAt(ltppDAO.optimizedHogs().get(0)+"s", 2, 3);
+                //For query 4
+                model.setValueAt(lpController.get(""+1).get(0)+"s", 3, 2);
+                model.setValueAt(lpController.getOptimized(""+1).get(0)+"s", 3, 3);
+                // For queries 6-8
+                model.setValueAt(mDAO.produceCrops().get(0).getTime()+"s", 4, 2);
+                model.setValueAt(mDAO.produceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 2);
+                model.setValueAt(mDAO.produceCrops("cassava").get(0).getTime()+"s", 6, 2);
+                model.setValueAt(mDAO.produceFish().get(0).getTime()+"s", 7, 2);
+                model.setValueAt(mDAO.produceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 2);
+                model.setValueAt(mDAO.produceFish("bisugo").get(0).getTime()+"s", 9, 2);
+                model.setValueAt(mDAO.produceLivestock().get(0).getTime()+"s", 10, 2);
+                model.setValueAt(mDAO.produceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 2);
+                model.setValueAt(mDAO.produceLivestock("aso").get(0).getTime()+"s", 12, 2);
+                model.setValueAt(mDAO.optimizedProduceCrops().get(0).getTime()+"s", 4, 3);
+                model.setValueAt(mDAO.optimizedProduceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 3);
+                model.setValueAt(mDAO.optimizedProduceCrops("cassava").get(0).getTime()+"s", 6, 3);
+                model.setValueAt(mDAO.optimizedProduceFish().get(0).getTime()+"s", 7, 3);
+                model.setValueAt(mDAO.optimizedProduceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 3);
+                model.setValueAt(mDAO.optimizedProduceFish("bisugo").get(0).getTime()+"s", 9, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock().get(0).getTime()+"s", 10, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
+                
+                //for Agrarian query
+                model.setValueAt(aDAO.get().get(0).getTime()+"s", 13, 2);
+                model.setValueAt(aDAO.getOptimized().get(0).getTime()+"s", 13, 3);
+>>>>>>> 7fe9ab1e507f70746cb0248747c20d1beca14a03
 	}
 }

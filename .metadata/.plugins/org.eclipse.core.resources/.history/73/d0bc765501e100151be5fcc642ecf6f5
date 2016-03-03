@@ -60,7 +60,7 @@ public class ListProductController {
 			products.add((String)i.next());
 		
 		//prints out total runtime of all queries
-		products.add(0, "" + runtime);
+		products.add(0, "" + (1.0*(runtime)));
 		System.out.println(1.0*(runtime));
 		return products;
 	}
