@@ -404,7 +404,7 @@ public class ListTownPerProduceDAO {
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
 
-				town.add(""+(1.0*(end - start)));
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("Towns that produce Cows")));
 				}
