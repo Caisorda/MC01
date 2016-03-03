@@ -60,7 +60,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceCrops(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -87,7 +87,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceCrops(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -114,7 +114,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceCrops(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -140,7 +140,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceFish(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -167,7 +167,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceFish(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -194,7 +194,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceFish(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -225,7 +225,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceLivestock(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -269,7 +269,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceLivestock(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -296,7 +296,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for optimizedProduceLivestock(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -324,7 +324,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceCrops(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -354,7 +354,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceCrops(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -384,7 +384,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceCrops(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -412,7 +412,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceFish(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -442,7 +442,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceFish(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -472,7 +472,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceFish(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -503,7 +503,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceLivestock(): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -547,7 +547,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceLivestock(int): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -574,7 +574,7 @@ public class Municipality {
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
 //                System.out.println("Runtime for produceLivestock(String): " + ((end-start)/1000.0));
-                muns.add(new Municipality(1.0*(end-start)/1000));
+                muns.add(new Municipality((end-start)/1000.0));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -584,6 +584,54 @@ public class Municipality {
         }
         
         return muns;
+    }
+    
+    public double cropsSum(){
+        double sum = 0;
+        
+        sum += produceCrops().get(0).getTime() + produceCrops(Crop.SUGARCANE_KEY).get(0).getTime() + produceCrops("cassava").get(0).getTime();
+        
+        return sum;
+    }
+    
+    public double fishSum(){
+        double sum = 0;
+        
+        sum += produceFish().get(0).getTime() + produceFish(Fish.TILAPIA_KEY).get(0).getTime() + produceFish("bisugo").get(0).getTime();
+        
+        return sum;
+    }
+    
+    public double liveSum(){
+        double sum = 0;
+        
+        sum += produceLivestock().get(0).getTime() + produceLivestock(Livestock.HOG_KEY).get(0).getTime() + produceLivestock("aso").get(0).getTime();
+        
+        return sum;
+    }
+    
+    public double optimizedCropsSum(){
+        double sum = 0;
+        
+        sum += optimizedProduceCrops().get(0).getTime() + optimizedProduceCrops(Crop.SUGARCANE_KEY).get(0).getTime() + optimizedProduceCrops("Cassava").get(0).getTime();
+        
+        return sum;
+    }
+    
+    public double optimizedFishSum(){
+        double sum = 0;
+        
+        sum += optimizedProduceFish().get(0).getTime() + optimizedProduceFish(Fish.TILAPIA_KEY).get(0).getTime() + optimizedProduceFish("bisugo").get(0).getTime();
+        
+        return sum;
+    }
+    
+    public double optimizedLiveSum(){
+        double sum = 0;
+        
+        sum += optimizedProduceLivestock().get(0).getTime() + optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime() + optimizedProduceLivestock("aso").get(0).getTime();
+        
+        return sum;
     }
     
 }

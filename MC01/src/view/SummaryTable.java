@@ -119,5 +119,12 @@ public class SummaryTable {
 		model.setValueAt(hpDAO.optimizedHouseHoldCount().get(0).getTime()+"s", 0, 3);
 		model.setValueAt(hpDAO.getTownCount().get(0).getTime()+"s", 1, 2);
 		model.setValueAt(hpDAO.optimizedTownCount().get(0).getTime()+"s", 1, 3);
+                
+                model.setValueAt(mDAO.cropsSum()+"s", 4, 2);
+                model.setValueAt(mDAO.fishSum()+"s", 5, 2);
+                model.setValueAt(mDAO.liveSum()+"s", 6, 2);
+                model.setValueAt(mDAO.optimizedCropsSum()+"s", 4, 3);
+                model.setValueAt(mDAO.optimizedFishSum()+"s", 5, 3);
+                model.setValueAt(mDAO.optimizedLiveSum()+"s", 6, 3);
 	}
 }
