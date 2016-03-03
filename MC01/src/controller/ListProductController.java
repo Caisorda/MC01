@@ -70,7 +70,7 @@ public class ListProductController {
 //		town = ""+34;
 		iterate = this.listProductDAO.optimizedBasicCrops(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Integer.parseInt((String)iterate.next());
+		runtime += Double.parseDouble((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -78,7 +78,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.optimizedBasicFish(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Integer.parseInt((String)iterate.next());
+		runtime += Double.parseDouble((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -86,7 +86,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.optimizedOtherCrop(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Integer.parseInt((String)iterate.next());
+		runtime += Double.parseDouble((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -94,7 +94,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.optimizedOtherFish(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Integer.parseInt((String)iterate.next());
+		runtime += Double.parseDouble((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -102,7 +102,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.optimizedLivestock(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Integer.parseInt((String)iterate.next());
+		runtime += Double.parseDouble((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)

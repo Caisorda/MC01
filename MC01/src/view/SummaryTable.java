@@ -15,6 +15,9 @@ import model.Municipality;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import model.Crop;
+import model.Fish;
+import model.Livestock;
 
 public class SummaryTable {
 
@@ -94,19 +97,37 @@ public class SummaryTable {
 		model.setValueAt("Number of towns that produce each product", model.getRowCount() - 1, 1);
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("3", model.getRowCount() - 1, 0);
-		model.setValueAt("List of towns that produce each product", model.getRowCount() - 1, 1);
+		model.setValueAt("List of towns that produce each product (Hogs as test case)", model.getRowCount() - 1, 1);
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("4", model.getRowCount() - 1, 0);
 		model.setValueAt("List of products produced by each town", model.getRowCount() - 1, 1);
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("5", model.getRowCount() - 1, 0);
-		model.setValueAt("List of towns that produce crops", model.getRowCount() - 1, 1);
+		model.setValueAt("List of towns that produce crops in general", model.getRowCount() - 1, 1);
+		model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce crops using a pre-defined ID (Sugarcane ID as test case)", model.getRowCount() - 1, 1);
+		model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce crops using a string ('cassava' as test case)", model.getRowCount() - 1, 1);
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("6", model.getRowCount() - 1, 0);
-		model.setValueAt("List of towns that produce aquatic products", model.getRowCount() - 1, 1);
+		model.setValueAt("List of towns that produce aquatic products in general", model.getRowCount() - 1, 1);
+                model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce aquatic products using a pre-defined ID (Tilapia ID as test case)", model.getRowCount() - 1, 1);
+		model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce aquatic products using a string ('bisugo' as test case)", model.getRowCount() - 1, 1);
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("7", model.getRowCount() - 1, 0);
-		model.setValueAt("List of towns that produce livestock", model.getRowCount() - 1, 1);
+		model.setValueAt("List of towns that produce livestock in general", model.getRowCount() - 1, 1);
+                model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce livestock using a pre-defined ID (Hog ID as test case)", model.getRowCount() - 1, 1);
+		model.setRowCount(model.getRowCount() + 1);
+                model.setValueAt("", model.getRowCount() - 1, 0);
+		model.setValueAt("List of towns that produce livestock using a string ('aso' as test case)", model.getRowCount() - 1, 1);
 	}
 	
 	public void testQueries(){
@@ -120,11 +141,28 @@ public class SummaryTable {
 		model.setValueAt(hpDAO.getTownCount().get(0).getTime()+"s", 1, 2);
 		model.setValueAt(hpDAO.optimizedTownCount().get(0).getTime()+"s", 1, 3);
                 
-                model.setValueAt(mDAO.cropsSum()+"s", 4, 2);
-                model.setValueAt(mDAO.fishSum()+"s", 5, 2);
-                model.setValueAt(mDAO.liveSum()+"s", 6, 2);
-                model.setValueAt(mDAO.optimizedCropsSum()+"s", 4, 3);
-                model.setValueAt(mDAO.optimizedFishSum()+"s", 5, 3);
-                model.setValueAt(mDAO.optimizedLiveSum()+"s", 6, 3);
+                // For query 3 ltppDAO townProduceController.getOptimized(produce).next()
+                model.setValueAt(ltppDAO.forHogs().get(0)+"s", 2, 2);
+                model.setValueAt(ltppDAO.optimizedHogs().get(0)+"s", 2, 3);
+                
+                // For queries 6-8
+                model.setValueAt(mDAO.produceCrops().get(0).getTime()+"s", 4, 2);
+                model.setValueAt(mDAO.produceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 2);
+                model.setValueAt(mDAO.produceCrops("cassava").get(0).getTime()+"s", 6, 2);
+                model.setValueAt(mDAO.produceFish().get(0).getTime()+"s", 7, 2);
+                model.setValueAt(mDAO.produceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 2);
+                model.setValueAt(mDAO.produceFish("bisugo").get(0).getTime()+"s", 9, 2);
+                model.setValueAt(mDAO.produceLivestock().get(0).getTime()+"s", 10, 2);
+                model.setValueAt(mDAO.produceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 2);
+                model.setValueAt(mDAO.produceLivestock("aso").get(0).getTime()+"s", 12, 2);
+                model.setValueAt(mDAO.optimizedProduceCrops().get(0).getTime()+"s", 4, 3);
+                model.setValueAt(mDAO.optimizedProduceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 3);
+                model.setValueAt(mDAO.optimizedProduceCrops("cassava").get(0).getTime()+"s", 6, 3);
+                model.setValueAt(mDAO.optimizedProduceFish().get(0).getTime()+"s", 7, 3);
+                model.setValueAt(mDAO.optimizedProduceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 3);
+                model.setValueAt(mDAO.optimizedProduceFish("bisugo").get(0).getTime()+"s", 9, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock().get(0).getTime()+"s", 10, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 3);
+                model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
 	}
 }

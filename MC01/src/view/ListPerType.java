@@ -77,16 +77,19 @@ public class ListPerType extends JFrame {
                         if (event.getStateChange() == ItemEvent.SELECTED) {
                             switch(item.toString()){
                                 case "Agricultural": result = mc.optimizedProduceCrops();
+                                                     result.remove(0);
                                                      typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Sugarcane", "Palay", "Corn", "Coffee", "Others"}));
                                                      typesTA.setText("");
                                                      typesTA.setEditable(false);   
                                                      break;
                                 case "Livestock": result = mc.optimizedProduceLivestock();
+                                                  result.remove(0);
                                                   typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Hog", "Goat", "Carabao", "Cow", "Chicken", "Duck", "Others"}));
                                                   typesTA.setText("");
                                                   typesTA.setEditable(false);  
                                                   break;
                                 case "Aquatic/Fishery": result = mc.optimizedProduceFish();
+                                                        result.remove(0);
                                                         typesCB.setModel(new DefaultComboBoxModel(new String[] {"All", "Tilapa", "Milkfish", "Catfish", "Mudfish", "Carp", "Others"}));
                                                         typesTA.setText("");
                                                         typesTA.setEditable(false);
@@ -125,22 +128,27 @@ public class ListPerType extends JFrame {
                             switch((String)cbProduce.getSelectedItem()){
                                 case "Agricultural": switch(item.toString()){
                                                         case "All": result = mc.optimizedProduceCrops();
+                                                                    result.remove(0);
                                                                     typesTA.setText("");
                                                                     typesTA.setEditable(false);
                                                                  break;
                                                         case "Sugarcane": result = mc.optimizedProduceCrops(Crop.SUGARCANE_KEY);
+                                                                          result.remove(0);
                                                                           typesTA.setText("");
                                                                           typesTA.setEditable(false);
                                                                  break;
                                                         case "Palay": result = mc.optimizedProduceCrops(Crop.PALAY_KEY);
+                                                                      result.remove(0);
                                                                       typesTA.setText("");
                                                                       typesTA.setEditable(false);
                                                                  break;
                                                         case "Corn": result = mc.optimizedProduceCrops(Crop.CORN_KEY);
+                                                                     result.remove(0);
                                                                      typesTA.setText("");
                                                                      typesTA.setEditable(false);
                                                                  break;
                                                         case "Coffee": result = mc.optimizedProduceCrops(Crop.COFFEE_KEY);
+                                                                       result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
@@ -149,31 +157,31 @@ public class ListPerType extends JFrame {
                                                      }
                                                         break;
                                 case "Livestock": switch(item.toString()){
-                                                        case "All": result = mc.optimizedProduceLivestock();
+                                                        case "All": result = mc.optimizedProduceLivestock();result.remove(0);
                                                                     typesTA.setText("");
                                                                     typesTA.setEditable(false);
                                                                  break;
-                                                        case "Hog": result = mc.optimizedProduceLivestock(Livestock.HOG_KEY);
+                                                        case "Hog": result = mc.optimizedProduceLivestock(Livestock.HOG_KEY);result.remove(0);
                                                                           typesTA.setText("");
                                                                           typesTA.setEditable(false);
                                                                  break;
-                                                        case "Goat": result = mc.optimizedProduceLivestock(Livestock.GOAT_KEY);
+                                                        case "Goat": result = mc.optimizedProduceLivestock(Livestock.GOAT_KEY);result.remove(0);
                                                                       typesTA.setText("");
                                                                       typesTA.setEditable(false);
                                                                  break;
-                                                        case "Carabao": result = mc.optimizedProduceLivestock(Livestock.CARABAO_KEY);
+                                                        case "Carabao": result = mc.optimizedProduceLivestock(Livestock.CARABAO_KEY);result.remove(0);
                                                                      typesTA.setText("");
                                                                      typesTA.setEditable(false);
                                                                  break;
-                                                        case "Cow": result = mc.optimizedProduceLivestock(Livestock.COW_KEY);
+                                                        case "Cow": result = mc.optimizedProduceLivestock(Livestock.COW_KEY);result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
-                                                        case "Chicken": result = mc.optimizedProduceLivestock(Livestock.CHICKEN_KEY);
+                                                        case "Chicken": result = mc.optimizedProduceLivestock(Livestock.CHICKEN_KEY);result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
-                                                        case "Duck": result = mc.optimizedProduceLivestock(Livestock.DUCK_KEY);
+                                                        case "Duck": result = mc.optimizedProduceLivestock(Livestock.DUCK_KEY);result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
@@ -182,27 +190,27 @@ public class ListPerType extends JFrame {
                                                      }
                                                     break;
                                 case "Aquatic/Fishery": switch(item.toString()){
-                                                        case "All": result = mc.optimizedProduceFish();
+                                                        case "All": result = mc.optimizedProduceFish();result.remove(0);
                                                                     typesTA.setText("");
                                                                     typesTA.setEditable(false);
                                                                  break;
-                                                        case "Tilapa": result = mc.optimizedProduceFish(Fish.TILAPIA_KEY);
+                                                        case "Tilapa": result = mc.optimizedProduceFish(Fish.TILAPIA_KEY);result.remove(0);
                                                                           typesTA.setText("");
                                                                           typesTA.setEditable(false);
                                                                  break;
-                                                        case "Milkfish": result = mc.optimizedProduceFish(Fish.MILKFISH_KEY);
+                                                        case "Milkfish": result = mc.optimizedProduceFish(Fish.MILKFISH_KEY);result.remove(0);
                                                                       typesTA.setText("");
                                                                       typesTA.setEditable(false);
                                                                  break;
-                                                        case "Catfish": result = mc.optimizedProduceFish(Fish.CATFISH_KEY);
+                                                        case "Catfish": result = mc.optimizedProduceFish(Fish.CATFISH_KEY);result.remove(0);
                                                                      typesTA.setText("");
                                                                      typesTA.setEditable(false);
                                                                  break;
-                                                        case "Mudfish": result = mc.optimizedProduceFish(Fish.MUDFISH_KEY);
+                                                        case "Mudfish": result = mc.optimizedProduceFish(Fish.MUDFISH_KEY);result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
-                                                        case "Carp": result = mc.optimizedProduceFish(Fish.CARP_KEY);
+                                                        case "Carp": result = mc.optimizedProduceFish(Fish.CARP_KEY);result.remove(0);
                                                                        typesTA.setText("");
                                                                        typesTA.setEditable(false);
                                                                  break;
@@ -233,11 +241,11 @@ public class ListPerType extends JFrame {
                         DefaultTableModel model = new DefaultTableModel();
                         ArrayList<Municipality> result = new ArrayList<>();
                         switch((String)cbProduce.getSelectedItem()){
-                            case "Agricultural": result = mc.optimizedProduceCrops(textField.getText());
+                            case "Agricultural": result = mc.optimizedProduceCrops(textField.getText());result.remove(0);
                                                  break;
-                            case "Livestock": result = mc.optimizedProduceLivestock(textField.getText());
+                            case "Livestock": result = mc.optimizedProduceLivestock(textField.getText());result.remove(0);
                                               break;
-                            case "Aquatic/Fishery": result = mc.optimizedProduceFish(textField.getText());
+                            case "Aquatic/Fishery": result = mc.optimizedProduceFish(textField.getText());result.remove(0);
                                                     break;
                         }
                         String[] towns = new String[result.size()];
