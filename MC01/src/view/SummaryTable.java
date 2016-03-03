@@ -157,12 +157,12 @@ public class SummaryTable {
 	}
 	
 	public void testQueries(){
-<<<<<<< HEAD
             Household_ProduceDAO hpDAO = new Household_ProduceDAO();
             AgrarianDAO aDAO = new AgrarianDAO();
             ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
             ListProductDAO lpDao = new ListProductDAO();
             Municipality mDAO = new Municipality();
+            ListProductController lpController = new ListProductController();
             
             // variables here
             double oQuery1 = 0;
@@ -185,6 +185,7 @@ public class SummaryTable {
             double oQuery7p1 = 0;
             double oQuery7p2 = 0;
             double oQuery7p3 = 0;
+            double oQuery8 = 0;
             
             double query1 = 0;
             double query2 = 0;
@@ -206,6 +207,7 @@ public class SummaryTable {
             double query7p1 = 0;
             double query7p2 = 0;
             double query7p3 = 0;
+            double query8 = 0;
             
             for(int i = 0; i < 9; i++){
                 // For query 1
@@ -234,6 +236,10 @@ public class SummaryTable {
                 query3p8 += Double.parseDouble(ltppDAO.forGoats().get(0));
                 oQuery3p8 += Double.parseDouble(ltppDAO.optimizedGoats().get(0));
                 
+                // For query 4
+                query4 = Double.parseDouble(lpController.get(""+1).get(0));
+                oQuery4 = Double.parseDouble(lpController.getOptimized(""+1).get(0));
+                
                 // For query 5
                 query5p1 += mDAO.produceCrops().get(0).getTime();
                 oQuery5p1 += mDAO.optimizedProduceCrops().get(0).getTime();
@@ -257,6 +263,10 @@ public class SummaryTable {
                 oQuery7p2 += mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime();
                 query7p3 += mDAO.produceLivestock("aso").get(0).getTime();
                 oQuery7p3 += mDAO.optimizedProduceLivestock("aso").get(0).getTime();
+                
+                // For query 8
+                query8 += aDAO.get().get(0).getTime();
+                oQuery8 += aDAO.getOptimized().get(0).getTime();
             }
             
             //average here
@@ -328,8 +338,12 @@ public class SummaryTable {
             model.setValueAt(oQuery3p7+"s", 8, 3);
             model.setValueAt(query3p8+"s", 9, 2);
             model.setValueAt(oQuery3p8+"s", 9, 3);
+            
+            // For query 4
+            model.setValueAt(query4+"s", 10, 2);
+            model.setValueAt(oQuery4+"s", 10, 3);
 
-            // For queries 6-8
+            // For queries 5-7
             model.setValueAt(query5p1+"s", 11, 2);
             model.setValueAt(query5p2+"s", 12, 2);
             model.setValueAt(query5p3+"s", 13, 2);
@@ -350,47 +364,8 @@ public class SummaryTable {
             model.setValueAt(oQuery7p2+"s", 18, 3);
             model.setValueAt(oQuery7p3+"s", 19, 3);
             
-=======
-		Household_ProduceDAO hpDAO = new Household_ProduceDAO();
-		AgrarianDAO aDAO = new AgrarianDAO();
-		ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
-		ListProductController lpController = new ListProductController();
-		Municipality mDAO = new Municipality();
-		//For Queries 1 & 2
-		model.setValueAt(hpDAO.getHouseHoldCount().get(0).getTime()+"s", 0, 2);
-		model.setValueAt(hpDAO.optimizedHouseHoldCount().get(0).getTime()+"s", 0, 3);
-		model.setValueAt(hpDAO.getTownCount().get(0).getTime()+"s", 1, 2);
-		model.setValueAt(hpDAO.optimizedTownCount().get(0).getTime()+"s", 1, 3);
-        
-                // For query 3 ltppDAO townProduceController.getOptimized(produce).next()
-                model.setValueAt(ltppDAO.forHogs().get(0)+"s", 2, 2);
-                model.setValueAt(ltppDAO.optimizedHogs().get(0)+"s", 2, 3);
-                //For query 4
-                model.setValueAt(lpController.get(""+1).get(0)+"s", 3, 2);
-                model.setValueAt(lpController.getOptimized(""+1).get(0)+"s", 3, 3);
-                // For queries 6-8
-                model.setValueAt(mDAO.produceCrops().get(0).getTime()+"s", 4, 2);
-                model.setValueAt(mDAO.produceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 2);
-                model.setValueAt(mDAO.produceCrops("cassava").get(0).getTime()+"s", 6, 2);
-                model.setValueAt(mDAO.produceFish().get(0).getTime()+"s", 7, 2);
-                model.setValueAt(mDAO.produceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 2);
-                model.setValueAt(mDAO.produceFish("bisugo").get(0).getTime()+"s", 9, 2);
-                model.setValueAt(mDAO.produceLivestock().get(0).getTime()+"s", 10, 2);
-                model.setValueAt(mDAO.produceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 2);
-                model.setValueAt(mDAO.produceLivestock("aso").get(0).getTime()+"s", 12, 2);
-                model.setValueAt(mDAO.optimizedProduceCrops().get(0).getTime()+"s", 4, 3);
-                model.setValueAt(mDAO.optimizedProduceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 3);
-                model.setValueAt(mDAO.optimizedProduceCrops("cassava").get(0).getTime()+"s", 6, 3);
-                model.setValueAt(mDAO.optimizedProduceFish().get(0).getTime()+"s", 7, 3);
-                model.setValueAt(mDAO.optimizedProduceFish(Fish.TILAPIA_KEY).get(0).getTime()+"s", 8, 3);
-                model.setValueAt(mDAO.optimizedProduceFish("bisugo").get(0).getTime()+"s", 9, 3);
-                model.setValueAt(mDAO.optimizedProduceLivestock().get(0).getTime()+"s", 10, 3);
-                model.setValueAt(mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 3);
-                model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
-                
-                //for Agrarian query
-                model.setValueAt(aDAO.get().get(0).getTime()+"s", 13, 2);
-                model.setValueAt(aDAO.getOptimized().get(0).getTime()+"s", 13, 3);
->>>>>>> 7fe9ab1e507f70746cb0248747c20d1beca14a03
+            // For query 8
+            model.setValueAt(query8+"s", 20, 2);
+            model.setValueAt(oQuery8+"s", 20, 3);
 	}
 }
