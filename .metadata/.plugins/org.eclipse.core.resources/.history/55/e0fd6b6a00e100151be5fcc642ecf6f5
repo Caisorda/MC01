@@ -7,7 +7,6 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
 
-import controller.ListProductController;
 import model.AgrarianDAO;
 import model.Household_ProduceDAO;
 import model.ListProductDAO;
@@ -139,7 +138,7 @@ public class SummaryTable {
 		Household_ProduceDAO hpDAO = new Household_ProduceDAO();
 		AgrarianDAO aDAO = new AgrarianDAO();
 		ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
-		ListProductController lpController = new ListProductController();
+		ListProductDAO lpDao = new ListProductDAO();
 		Municipality mDAO = new Municipality();
 		//For Queries 1 & 2
 		model.setValueAt(hpDAO.getHouseHoldCount().get(0).getTime()+"s", 0, 2);
@@ -150,9 +149,9 @@ public class SummaryTable {
                 // For query 3 ltppDAO townProduceController.getOptimized(produce).next()
                 model.setValueAt(ltppDAO.forHogs().get(0)+"s", 2, 2);
                 model.setValueAt(ltppDAO.optimizedHogs().get(0)+"s", 2, 3);
+                
                 //For query 4
-                model.setValueAt(lpController.get(""+1).get(0)+"s", 3, 2);
-                model.setValueAt(lpController.getOptimized(""+1).get(0)+"s", 3, 3);
+                
                 // For queries 6-8
                 model.setValueAt(mDAO.produceCrops().get(0).getTime()+"s", 4, 2);
                 model.setValueAt(mDAO.produceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 2);
@@ -172,9 +171,5 @@ public class SummaryTable {
                 model.setValueAt(mDAO.optimizedProduceLivestock().get(0).getTime()+"s", 10, 3);
                 model.setValueAt(mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 3);
                 model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
-                
-                //for Agrarian query
-                model.setValueAt(aDAO.get().get(0).getTime()+"s", 13, 2);
-                model.setValueAt(aDAO.getOptimized().get(0).getTime()+"s", 13, 3);
 	}
 }

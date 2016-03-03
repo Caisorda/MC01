@@ -174,7 +174,7 @@ public class SummaryTable {
                 model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
                 
                 //for Agrarian query
-                model.setValueAt(aDAO.get().get(0).getTime()+"s", 13, 2);
-                model.setValueAt(aDAO.getOptimized().get(0).getTime()+"s", 13, 3);
+                model.setValueAt(aDAO.get().get(0).getTime(), 13, 2);
+                model.setValueAt(aDAO.getOptimized().get(0).getTime(), 13, 3);
 	}
 }

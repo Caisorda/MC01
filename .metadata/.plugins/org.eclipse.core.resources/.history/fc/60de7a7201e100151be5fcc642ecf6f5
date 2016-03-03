@@ -150,9 +150,10 @@ public class SummaryTable {
                 // For query 3 ltppDAO townProduceController.getOptimized(produce).next()
                 model.setValueAt(ltppDAO.forHogs().get(0)+"s", 2, 2);
                 model.setValueAt(ltppDAO.optimizedHogs().get(0)+"s", 2, 3);
+                
                 //For query 4
-                model.setValueAt(lpController.get(""+1).get(0)+"s", 3, 2);
-                model.setValueAt(lpController.getOptimized(""+1).get(0)+"s", 3, 3);
+                model.setValueAt(lpController.getOptimized(""+1).get(0)+"s", 3, 2);
+                model.setValueAt(lpController.get(""+1).get(0)+"s", 3, 3);
                 // For queries 6-8
                 model.setValueAt(mDAO.produceCrops().get(0).getTime()+"s", 4, 2);
                 model.setValueAt(mDAO.produceCrops(Crop.SUGARCANE_KEY).get(0).getTime()+"s", 5, 2);
@@ -172,9 +173,5 @@ public class SummaryTable {
                 model.setValueAt(mDAO.optimizedProduceLivestock().get(0).getTime()+"s", 10, 3);
                 model.setValueAt(mDAO.optimizedProduceLivestock(Livestock.HOG_KEY).get(0).getTime()+"s", 11, 3);
                 model.setValueAt(mDAO.optimizedProduceLivestock("aso").get(0).getTime()+"s", 12, 3);
-                
-                //for Agrarian query
-                model.setValueAt(aDAO.get().get(0).getTime()+"s", 13, 2);
-                model.setValueAt(aDAO.getOptimized().get(0).getTime()+"s", 13, 3);
 	}
 }

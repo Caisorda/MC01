@@ -20,7 +20,7 @@ public class ListProductController {
 //		town = ""+34;
 		iterate = this.listProductDAO.getBasicCrops(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Double.parseDouble((String)iterate.next());
+		runtime += Integer.parseInt((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		products.add("");
 		
@@ -29,7 +29,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.getBasicFish(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Double.parseDouble((String)iterate.next());
+		runtime += Integer.parseInt((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -37,7 +37,7 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.getOtherCrop(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Double.parseDouble((String)iterate.next());
+		runtime += Integer.parseInt((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
@@ -45,23 +45,23 @@ public class ListProductController {
 		
 		iterate = this.listProductDAO.getOtherFish(town).iterator();
 		//adds runtime of each query to total runtime
-		runtime += Double.parseDouble((String)iterate.next());
+		runtime += Integer.parseInt((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
 			products.add((String)i.next());
 		
 		iterate = this.listProductDAO.getLivestock(town).iterator();
-		//adds runtime of each query to total 
-		runtime += Double.parseDouble((String)iterate.next());
+		//adds runtime of each query to total runtime
+		runtime += Integer.parseInt((String)iterate.next());
 //		System.out.println((String)iterate.next());
 		
 		for(Iterator i = iterate; i.hasNext();)
 			products.add((String)i.next());
 		
 		//prints out total runtime of all queries
-		products.add(0, "" + runtime);
-		System.out.println(1.0*(runtime));
+		products.add(0, "" + (1.0*(runtime/1000)));
+		System.out.println(1.0*(runtime/1000));
 		return products;
 	}
 	
@@ -111,8 +111,8 @@ public class ListProductController {
 			products.add((String)i.next());
 		
 		//prints out total runtime of all queries
-		products.add(0, "" + runtime);
-		System.out.println(1.0*(runtime));
+		products.add(0, "" + (1.0*(runtime/1000)));
+		System.out.println(1.0*(runtime/1000));
 		return products;
 	}
 }
