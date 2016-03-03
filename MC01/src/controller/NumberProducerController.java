@@ -15,13 +15,21 @@ public class NumberProducerController {
 		
 		public Iterator get(String unit){
 			if(unit.equalsIgnoreCase("household")){
-				return this.houseHoldDAO.getHouseHoldCount();
+				return this.houseHoldDAO.getHouseHoldCount().iterator();
 			}else{
-				return this.houseHoldDAO.getTownCount();
+				return this.houseHoldDAO.getTownCount().iterator();
 			}
 			
 		}
 		
+		public Iterator getOptimized(String unit){
+			if(unit.equalsIgnoreCase("household")){
+				return this.houseHoldDAO.optimizedHouseHoldCount().iterator();
+			}else{
+				return this.houseHoldDAO.optimizedTownCount().iterator();
+			}
+			
+		}
 //		public ArrayList<Long> getTownCount(){
 //			ArrayList<Long> counts 
 //		}

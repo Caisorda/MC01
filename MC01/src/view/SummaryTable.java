@@ -6,6 +6,13 @@ import javax.swing.JFrame;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.table.DefaultTableModel;
+
+import model.AgrarianDAO;
+import model.Household_ProduceDAO;
+import model.ListProductDAO;
+import model.ListTownPerProduceDAO;
+import model.Municipality;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -18,18 +25,18 @@ public class SummaryTable {
 	/**
 	 * Launch the application.
 	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SummaryTable window = new SummaryTable();
-//					window.frmSummaryTable.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SummaryTable window = new SummaryTable();
+					window.frmSummaryTable.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
@@ -74,6 +81,7 @@ public class SummaryTable {
 		scrollPane.setViewportView(table);
 		frmSummaryTable.getContentPane().setLayout(groupLayout);
 		initializeTable();
+		testQueries();
 		frmSummaryTable.setVisible(true);
 	}
 	
@@ -99,5 +107,17 @@ public class SummaryTable {
 		model.setRowCount(model.getRowCount() + 1);
 		model.setValueAt("7", model.getRowCount() - 1, 0);
 		model.setValueAt("List of towns that produce livestock", model.getRowCount() - 1, 1);
+	}
+	
+	public void testQueries(){
+		Household_ProduceDAO hpDAO = new Household_ProduceDAO();
+		AgrarianDAO aDAO = new AgrarianDAO();
+		ListTownPerProduceDAO ltppDAO = new ListTownPerProduceDAO();
+		ListProductDAO lpDao = new ListProductDAO();
+		Municipality mDAO = new Municipality();
+		model.setValueAt(hpDAO.getHouseHoldCount().get(0).getTime()+"s", 0, 2);
+		model.setValueAt(hpDAO.optimizedHouseHoldCount().get(0).getTime()+"s", 0, 3);
+		model.setValueAt(hpDAO.getTownCount().get(0).getTime()+"s", 1, 2);
+		model.setValueAt(hpDAO.optimizedTownCount().get(0).getTime()+"s", 1, 3);
 	}
 }

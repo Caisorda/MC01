@@ -49,4 +49,43 @@ public class TownProduceController {
 		}
 		return null;
 	}
+	
+	public Iterator getOptimized(String produce){
+		if(produce.equalsIgnoreCase("Pig")){
+			return dao.optimizedHogs().iterator();
+		}else if(produce.equalsIgnoreCase("Chicken")){
+			return dao.optimizedChickens().iterator();
+		}else if(produce.equalsIgnoreCase("Cow")){
+			return dao.optimizedCows().iterator();
+		}else if(produce.equalsIgnoreCase("Carabao")){
+			return dao.optimizedCarabaos().iterator();
+		}else if(produce.equalsIgnoreCase("Duck")){
+			return dao.optimizedDucks().iterator();
+		}else if(produce.equalsIgnoreCase("Pig")){
+			return dao.optimizedHogs().iterator();
+		}else if(produce.equalsIgnoreCase("Goat")){
+			return dao.optimizedGoats().iterator();
+		}else if(produce.equalsIgnoreCase("Sugar Cane")){
+			return dao.optimizedCrops(1).iterator();
+		}else if(produce.equalsIgnoreCase("Palay")){
+			return dao.optimizedCrops(2).iterator();
+		}else if(produce.equalsIgnoreCase("Corn")){
+			return dao.optimizedCrops(3).iterator();
+		}else if(produce.equalsIgnoreCase("Other Crops")){
+			return dao.optimizedCrops(4).iterator();
+		}else if(produce.equalsIgnoreCase("Tilapia")){
+			return dao.optimizedFishies(1).iterator();
+		}else if(produce.equalsIgnoreCase("Milkfish")){
+			return dao.optimizedFishies(2).iterator();
+		}else if(produce.equalsIgnoreCase("Catfish")){
+			return dao.optimizedFishies(3).iterator();
+		}else if(produce.equalsIgnoreCase("Mudfish")){
+			return dao.optimizedFishies(4).iterator();
+		}else if(produce.equalsIgnoreCase("Carp")){
+			return dao.optimizedFishies(5).iterator();
+		}else if(produce.equalsIgnoreCase("Other Aquatic Produce")){
+			return dao.optimizedFishies(6).iterator();
+		}
+		return null;
+	}
 }

@@ -132,7 +132,7 @@ public class ListProducers extends JFrame {
 	public void updateTable(String produce){
 		String result;
 		clearTable();
-		for(Iterator i = townProduceController.get(produce); i.hasNext();){
+		for(Iterator i = townProduceController.getOptimized(produce); i.hasNext();){
 			result = ((String)i.next());
 			if(result!=null&&!result.equals("")){
         		model.setRowCount(model.getRowCount() + 1);

@@ -132,7 +132,7 @@ public class NumberProducers extends JFrame {
 	}
 	
 	public void updateTable(String unit){
-		Iterator i = numberProducerController.get(unit);
+		Iterator i = numberProducerController.getOptimized(unit);
         clearTable();
 		
 		while(i.hasNext()){

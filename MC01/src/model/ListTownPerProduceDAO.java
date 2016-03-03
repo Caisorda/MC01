@@ -46,6 +46,7 @@ public class ListTownPerProduceDAO {
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
 				
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -76,7 +77,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Goat\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -107,7 +109,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Carabao\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -138,7 +141,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Cow\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -169,7 +173,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Chicken\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -200,7 +205,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Duck\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -234,7 +240,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Fish" +" " + fishID +"\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -268,7 +275,8 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Crop" +" " + cropID +"\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
 					town.add(new String(rs.getString("mun")));
 				}
@@ -299,9 +307,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Pig\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Hogs")));
 				}
 			}
 			pstmt.close();
@@ -330,9 +339,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Goat\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Goats")));
 				}
 			}
 			pstmt.close();
@@ -361,9 +371,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Carabao\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Carabaos")));
 				}
 			}
 			pstmt.close();
@@ -392,9 +403,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Cow\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Cows")));
 				}
 			}
 			pstmt.close();
@@ -423,9 +435,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Chicken\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Chickens")));
 				}
 			}
 			pstmt.close();
@@ -454,9 +467,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Duck\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce Ducks")));
 				}
 			}
 			pstmt.close();
@@ -487,9 +501,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Fish" +" " + fishID +"\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce fish")));
 				}
 			}
 			pstmt.close();
@@ -520,9 +535,10 @@ public class ListTownPerProduceDAO {
 	            System.out.println("Input: \"Crop" +" " + cropID +"\"");
 				System.out.println(1.0*(end - start)/1000);
 				System.out.println();
-				
+
+				town.add(""+(1.0*(end - start)/1000));
 				while(rs.next()){
-					town.add(new String(rs.getString("mun")));
+					town.add(new String(rs.getString("Towns that produce crops")));
 				}
 			}
 			pstmt.close();

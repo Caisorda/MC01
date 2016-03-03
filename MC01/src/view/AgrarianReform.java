@@ -88,7 +88,7 @@ public class AgrarianReform extends JFrame {
 	
 	public void updateTable(){
         clearTable();
-        for(Iterator i = this.agrarianController.get(); i.hasNext();){
+        for(Iterator i = this.agrarianController.getOptimized(); i.hasNext();){
         	AgrarianHousehold house = ((AgrarianHousehold)i.next());
         	model.setRowCount(model.getRowCount() + 1);
         	model.setValueAt(house.getId(), model.getRowCount() - 1, 0);

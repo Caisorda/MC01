@@ -12,6 +12,7 @@ public class AgrarianHousehold {
 	private int other;
 	private int fish;
 	private int crops;
+	private double time;
 	
 	public AgrarianHousehold(String id, int carabao, int chicken, int cow, int duck, int goat, int pig, int other,
 			int fish, int crops) {
@@ -25,6 +26,10 @@ public class AgrarianHousehold {
 		this.other = other;
 		this.fish = fish;
 		this.crops = crops;
+	}
+	
+	public AgrarianHousehold(double time){
+		this.time = time;
 	}
 	
 	public String getId() {

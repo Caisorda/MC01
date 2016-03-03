@@ -139,7 +139,7 @@ public class ListProduct extends JFrame{
 	
 	public void updateTable(String town){
 		ArrayList<String> products = new ArrayList();
-		products.addAll(listProductController.get(town));
+		products.addAll(listProductController.getOptimized(town));
 		System.out.println(products.size());
         clearTable();
         for(String product: products){

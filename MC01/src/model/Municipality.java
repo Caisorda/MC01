@@ -22,9 +22,18 @@ import java.util.Iterator;
 public class Municipality {
     
     private String munNum;
+    private double time;
     
     public Municipality(){}
     
+    public Municipality(double time){
+    	this.time = time;
+    }
+
+	public double getTime(){
+		return time;
+	}
+	
     public Municipality(String munNum){
         this.munNum = munNum;
     }
@@ -37,7 +46,7 @@ public class Municipality {
         this.munNum = munNum;
     }
     
-    public Iterator optimizedProduceCrops(){
+    public ArrayList<Municipality> optimizedProduceCrops(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -50,7 +59,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceCrops(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceCrops(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -59,10 +69,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceCrops(int cropId){ //using crop id
+    public ArrayList<Municipality> optimizedProduceCrops(int cropId){ //using crop id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -76,7 +86,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceCrops(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceCrops(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -85,10 +96,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceCrops(String cropName){ //using crop name
+    public ArrayList<Municipality> optimizedProduceCrops(String cropName){ //using crop name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -102,7 +113,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceCrops(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceCrops(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -111,10 +123,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceFish(){
+    public ArrayList<Municipality> optimizedProduceFish(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -127,7 +139,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceFish(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceFish(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -136,10 +149,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceFish(int fishId){ //using fish id
+    public ArrayList<Municipality> optimizedProduceFish(int fishId){ //using fish id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -153,7 +166,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceFish(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceFish(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -162,10 +176,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceFish(String fishName){ //using fish name
+    public ArrayList<Municipality> optimizedProduceFish(String fishName){ //using fish name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -179,7 +193,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceFish(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceFish(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -188,10 +203,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceLivestock(){
+    public ArrayList<Municipality> optimizedProduceLivestock(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -209,7 +224,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceLivestock(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceLivestock(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -218,10 +234,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceLivestock(int livestockId){ //using livestock id
+    public ArrayList<Municipality> optimizedProduceLivestock(int livestockId){ //using livestock id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -252,7 +268,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceLivestock(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceLivestock(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -261,10 +278,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator optimizedProduceLivestock(String livestockName){ //using livestock name
+    public ArrayList<Municipality> optimizedProduceLivestock(String livestockName){ //using livestock name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -278,7 +295,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for optimizedProduceLivestock(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for optimizedProduceLivestock(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -287,10 +305,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceCrops(){
+    public ArrayList<Municipality> produceCrops(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -305,7 +323,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceCrops(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceCrops(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -314,10 +333,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceCrops(int cropId){ //using crop id
+    public ArrayList<Municipality> produceCrops(int cropId){ //using crop id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -334,7 +353,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceCrops(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceCrops(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -343,10 +363,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceCrops(String cropName){ //using crop name
+    public ArrayList<Municipality> produceCrops(String cropName){ //using crop name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -363,7 +383,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceCrops(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceCrops(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -372,10 +393,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceFish(){
+    public ArrayList<Municipality> produceFish(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -390,7 +411,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceFish(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceFish(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -399,10 +421,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceFish(int fishId){ //using fish id
+    public ArrayList<Municipality> produceFish(int fishId){ //using fish id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -419,7 +441,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceFish(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceFish(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -428,10 +451,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceFish(String fishName){ //using fish name
+    public ArrayList<Municipality> produceFish(String fishName){ //using fish name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -448,7 +471,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceFish(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceFish(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -457,10 +481,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceLivestock(){
+    public ArrayList<Municipality> produceLivestock(){
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -478,7 +502,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceLivestock(): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceLivestock(): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -487,10 +512,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceLivestock(int livestockId){ //using livestock id
+    public ArrayList<Municipality> produceLivestock(int livestockId){ //using livestock id
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -521,7 +546,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceLivestock(int): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceLivestock(int): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -530,10 +556,10 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
-    public Iterator produceLivestock(String livestockName){ //using livestock name
+    public ArrayList<Municipality> produceLivestock(String livestockName){ //using livestock name
         ArrayList<Municipality> muns = new ArrayList<>();
         
         try{
@@ -547,7 +573,8 @@ public class Municipality {
                 long start = System.currentTimeMillis();
                 ResultSet rs = pstmt.executeQuery();
                 long end = System.currentTimeMillis();
-                System.out.println("Runtime for produceLivestock(String): " + ((end-start)/1000.0));
+//                System.out.println("Runtime for produceLivestock(String): " + ((end-start)/1000.0));
+                muns.add(new Municipality(1.0*(end-start)/1000));
                 while(rs.next()){
                     muns.add(new Municipality(rs.getString("mun")));
                 }
@@ -556,7 +583,7 @@ public class Municipality {
         } catch (SQLException e) {
         }
         
-        return muns.iterator();
+        return muns;
     }
     
 }

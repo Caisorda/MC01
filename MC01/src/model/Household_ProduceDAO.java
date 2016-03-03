@@ -21,7 +21,7 @@ public class Household_ProduceDAO {
 		System.out.println("household dao initialized.");
 	}
 	
-	public Iterator getHouseHoldCount(){
+	public ArrayList<NumberProducer> getHouseHoldCount(){
 		ArrayList<NumberProducer> counts = new ArrayList();
 		//System.out.println("household dao initialized.");
 		try{
@@ -43,9 +43,10 @@ public class Household_ProduceDAO {
 			long start = System.currentTimeMillis();
             ResultSet rs = preps.executeQuery();
             long end = System.currentTimeMillis();
-            System.out.println("Input: \"Household\"");
-			System.out.println(1.0*(end - start)/1000);
-			System.out.println();
+//            System.out.println("Input: \"Household\"");
+//			System.out.println(1.0*(end - start)/1000);
+//			System.out.println();
+            counts.add(new NumberProducer(1.0*(end - start)/1000));
 			
 			if(rs.next()){
 				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
@@ -61,13 +62,14 @@ public class Household_ProduceDAO {
 			}
 			}catch(SQLException sqle){
 				System.out.println("problem in dao.");
+				sqle.printStackTrace();
 			}
-			return counts.iterator();
+			return counts;
 					
 	
 		}
 	
-	public Iterator optimizedHouseHoldCount(){
+	public ArrayList<NumberProducer> optimizedHouseHoldCount(){
 		ArrayList<NumberProducer> counts = new ArrayList();
 		//System.out.println("household dao initialized.");
 		try{
@@ -77,7 +79,10 @@ public class Household_ProduceDAO {
 					+ "COUNT(NULLIF(live_a_carabao, 2)) AS carabao, "
 					+ "COUNT(NULLIF(live_a_cow, 2)) AS cow, "
 					+ "COUNT(NULLIF(live_a_chicken, 2)) AS chicken, "
-					+ "COUNT(NULLIF(live_a_duck, 2)) AS duck "
+					+ "COUNT(NULLIF(live_a_duck, 2)) AS duck, "
+					+ "COUNT(NULLIF(live_a_others, 2)) AS others, "
+					+ "COUNT(NULLIF(croptype, 2)) AS crops, "
+					+ "COUNT(NULLIF(aquanitype, 2)) AS aquani "
 					+ "FROM "
 					+ "combinedtable h";
 			PreparedStatement preps = connection.prepareStatement(query);
@@ -85,9 +90,10 @@ public class Household_ProduceDAO {
 			long start = System.currentTimeMillis();
 			ResultSet rs = preps.executeQuery();
 			long end = System.currentTimeMillis();
-			System.out.println("Input: \"Household\"");
-			System.out.println(1.0*(end - start)/1000);
-			System.out.println();
+//			System.out.println("Input: \"Household\"");
+//			System.out.println(1.0*(end - start)/1000);
+//			System.out.println();
+            counts.add(new NumberProducer(1.0*(end - start)/1000));
 
 			if(rs.next()){
 				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
@@ -103,13 +109,14 @@ public class Household_ProduceDAO {
 			}
 		}catch(SQLException sqle){
 			System.out.println("problem in dao.");
+			sqle.printStackTrace();
 		}
-		return counts.iterator();
+		return counts;
 
 
 	}
 	
-	public Iterator getTownCount(){
+	public ArrayList<NumberProducer> getTownCount(){
 		ArrayList<NumberProducer> counts = new ArrayList();
 		try{
 			String query = "select (select COUNT(*) as ducks " 
@@ -157,9 +164,10 @@ public class Household_ProduceDAO {
 			long start = System.currentTimeMillis();
             ResultSet rs = preps.executeQuery();
             long end = System.currentTimeMillis();
-            System.out.println("Input: \"Town\"");
-			System.out.println(1.0*(end - start)/1000);
-			System.out.println();
+//            System.out.println("Input: \"Town\"");
+//			System.out.println(1.0*(end - start)/1000);
+//			System.out.println();
+            counts.add(new NumberProducer(1.0*(end - start)/1000));
 			
 			if(rs.next()){
 				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
@@ -175,11 +183,12 @@ public class Household_ProduceDAO {
 			}
 			}catch(SQLException sqle){
 				System.out.println("problem in dao.");
+				sqle.printStackTrace();
 			}
-			return counts.iterator();
+			return counts;
 	}
 	
-	public Iterator optimizedTownCount(){
+	public ArrayList<NumberProducer> optimizedTownCount(){
 		ArrayList<NumberProducer> counts = new ArrayList();
 		try{
 			String query = "select (select COUNT(duck) as ducks "
@@ -232,9 +241,10 @@ public class Household_ProduceDAO {
 			long start = System.currentTimeMillis();
             ResultSet rs = preps.executeQuery();
             long end = System.currentTimeMillis();
-            System.out.println("Input: \"Town\"");
-			System.out.println(1.0*(end - start)/1000);
-			System.out.println();
+//            System.out.println("Input: \"Town\"");
+//			System.out.println(1.0*(end - start)/1000);
+//			System.out.println();
+            counts.add(new NumberProducer(1.0*(end - start)/1000));
 			
 			if(rs.next()){
 				counts.add(new NumberProducer("Pig", rs.getLong("hog")));
@@ -250,8 +260,9 @@ public class Household_ProduceDAO {
 			}
 			}catch(SQLException sqle){
 				System.out.println("problem in dao.");
+				sqle.printStackTrace();
 			}
-			return counts.iterator();
+			return counts;
 	}
 }
 	

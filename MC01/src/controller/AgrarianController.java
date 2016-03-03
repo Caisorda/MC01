@@ -14,6 +14,10 @@ public class AgrarianController {
 
 
 	public Iterator get(){
-		return this.dao.get();
+		return this.dao.get().iterator();
+	}
+	
+	public Iterator getOptimized(){
+		return this.dao.getOptimized().iterator();
 	}
 }
